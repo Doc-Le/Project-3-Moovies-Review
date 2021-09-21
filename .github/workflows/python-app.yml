@@ -23,11 +23,13 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-    - name: Start environment
-      run: |
         pip install virtualenv
+    - name: Start virtual environment
+      run: |
         virtualenv virtual
         source virtual/bin/activate
+    - name: Install dependencies virtual environment
+      run: |
         pip install -r requirements.txt
     - name: Start application
       run: |
