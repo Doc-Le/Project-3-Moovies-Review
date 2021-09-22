@@ -322,7 +322,7 @@ def main_page():
         },
         {
             "adult": False,
-            "backdrop_path": null,
+            "backdrop_path": "",
             "genre_ids": [
                 35,
                 10749,
@@ -364,7 +364,7 @@ def main_page():
         },
         {
             "adult": False,
-            "backdrop_path": null,
+            "backdrop_path": "",
             "genre_ids": [
                 28,
                 53
