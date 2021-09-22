@@ -6,9 +6,9 @@ from flask import render_template
 @app.route("/")
 def main_page():
     #movies = mongo.db.movies.find({})
-    movies= [
+    movies=  [
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/tmpY6f0Lf7Dnx6inByjvHby4AYf.jpg",
             "genre_ids": [
                 35,
@@ -22,12 +22,12 @@ def main_page():
             "poster_path": "/5lqJx0uNKrD1cEKgaqF1LBsLAoi.jpg",
             "release_date": "2018-06-01",
             "title": "Action Point",
-            "video": false,
+            "video": False,
             "vote_average": 5.4,
             "vote_count": 252
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/bumIpNTKmLY380bruTgIDTrXfpZ.jpg",
             "genre_ids": [
                 12,
@@ -44,12 +44,12 @@ def main_page():
             "poster_path": "/yTfjHPqh7C7bkfMtEKx2mPdorQw.jpg",
             "release_date": "1993-06-18",
             "title": "Last Action Hero",
-            "video": false,
+            "video": False,
             "vote_average": 6.4,
             "vote_count": 1910
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/bE6SwIJrDuDchsXXoE2njVFu795.jpg",
             "genre_ids": [
                 16,
@@ -64,12 +64,12 @@ def main_page():
             "poster_path": "/pNrQaH0ATrz9wFrNpwfB1aU4MpK.jpg",
             "release_date": "2003-11-14",
             "title": "Looney Tunes: Back in Action",
-            "video": false,
+            "video": False,
             "vote_average": 6.3,
             "vote_count": 1122
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/9RLRkSeBll1xBhIaedjPUxyBMeM.jpg",
             "genre_ids": [
                 28,
@@ -85,12 +85,12 @@ def main_page():
             "poster_path": "/nBrDcnNQca88ed1gRwZ1Q5cjNxE.jpg",
             "release_date": "1984-11-16",
             "title": "Missing in Action",
-            "video": false,
+            "video": False,
             "vote_average": 5.8,
             "vote_count": 317
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/9BrAptGRPR81MOjZeRBiyiUz8mW.jpg",
             "genre_ids": [
                 28,
@@ -107,12 +107,12 @@ def main_page():
             "poster_path": "/ooRTSbr0MBkQ5LcyGo4FtEtyfaB.jpg",
             "release_date": "1988-02-12",
             "title": "Action Jackson",
-            "video": false,
+            "video": False,
             "vote_average": 5.4,
             "vote_count": 152
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/vcI8kweLIpGv7jb9NWVunOyZ2O7.jpg",
             "genre_ids": [
                 18
@@ -125,12 +125,12 @@ def main_page():
             "poster_path": "/6VsitR71vVKiGEDFPT71dKigbGN.jpg",
             "release_date": "1998-12-25",
             "title": "A Civil Action",
-            "video": false,
+            "video": False,
             "vote_average": 6.4,
             "vote_count": 297
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/iwIgSq0uOJA9oJd38XbjG5hiMg4.jpg",
             "genre_ids": [
                 99
@@ -143,12 +143,12 @@ def main_page():
             "poster_path": "/AoNojvxMhZtdVu9V8LtjfXJ6TPT.jpg",
             "release_date": "2020-08-22",
             "title": "Class Action Park",
-            "video": false,
+            "video": False,
             "vote_average": 6.5,
             "vote_count": 65
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/7zOLoxkdqEZj6zd2Uw9zrjXDwql.jpg",
             "genre_ids": [
                 10751,
@@ -163,12 +163,12 @@ def main_page():
             "poster_path": "/kGlTFeilg6RtyYi86kRQRml8CRG.jpg",
             "release_date": "2014-03-25",
             "title": "Monster High: Frights, Camera, Action!",
-            "video": false,
+            "video": False,
             "vote_average": 7,
             "vote_count": 84
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/juugwVQ6OO0WFJcMlKhm3KVAr49.jpg",
             "genre_ids": [
                 18,
@@ -182,12 +182,12 @@ def main_page():
             "poster_path": "/vCl4v5oKEtPANXe0L7Q0feJgCYa.jpg",
             "release_date": "1991-03-15",
             "title": "Class Action",
-            "video": false,
+            "video": False,
             "vote_average": 6.2,
             "vote_count": 105
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/dLR19YNqv8eZYQTRVDYoM8gunvq.jpg",
             "genre_ids": [
                 28,
@@ -201,12 +201,12 @@ def main_page():
             "poster_path": "/eFaW1GWwkuuTWwLehMOHRBSG3BC.jpg",
             "release_date": "1988-01-22",
             "title": "Braddock: Missing in Action III",
-            "video": false,
+            "video": False,
             "vote_average": 5.8,
             "vote_count": 170
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/dc4WaGwzYPL0t88TZFM3sqEYh0S.jpg",
             "genre_ids": [
                 28,
@@ -220,12 +220,12 @@ def main_page():
             "poster_path": "/vOgiL2KQYyTHJ225lT5QB5B9kO0.jpg",
             "release_date": "1985-03-01",
             "title": "Missing in Action 2: The Beginning",
-            "video": false,
+            "video": False,
             "vote_average": 5.9,
             "vote_count": 183
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/3bsCC10rhLaL60D2GBqcJguEaJN.jpg",
             "genre_ids": [
                 18
@@ -238,12 +238,12 @@ def main_page():
             "poster_path": "/9VhkxeP1uX39skDb1l4KEn8EsKS.jpg",
             "release_date": "1980-01-04",
             "title": "Action",
-            "video": false,
+            "video": False,
             "vote_average": 4.5,
             "vote_count": 11
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/vln6rDLYPYiLMz0PCN7z5mvVLhG.jpg",
             "genre_ids": [
                 28,
@@ -259,12 +259,12 @@ def main_page():
             "poster_path": "/cgS2xvButiNQtT1dGf1cukdoMcR.jpg",
             "release_date": "2004-01-01",
             "title": "Direct Action",
-            "video": false,
+            "video": False,
             "vote_average": 5.7,
             "vote_count": 29
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/s67Pj026QeQe4ricdR78KWORmop.jpg",
             "genre_ids": [
                 35
@@ -277,12 +277,12 @@ def main_page():
             "poster_path": "/mVqV88crk9evENJB0DeVQzIL94v.jpg",
             "release_date": "2019-09-06",
             "title": "Love Action Drama",
-            "video": false,
+            "video": False,
             "vote_average": 7,
             "vote_count": 14
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/6SGbP7YBDDxwTA9LBdvfrM2sX9o.jpg",
             "genre_ids": [
                 53,
@@ -302,7 +302,7 @@ def main_page():
             "vote_count": 12
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/jHvUu1G1C176OfIBnVwwVhRC6nU.jpg",
             "genre_ids": [
                 28,
@@ -316,12 +316,12 @@ def main_page():
             "poster_path": "/k22cE5YBgQpuf8Vsh2LpkyOEM2F.jpg",
             "release_date": "2020-02-27",
             "title": "Legal Action",
-            "video": false,
+            "video": False,
             "vote_average": 4,
             "vote_count": 1
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": null,
             "genre_ids": [
                 35,
@@ -336,12 +336,12 @@ def main_page():
             "poster_path": "/8YzWja1cgzIaaKys6Ajk95kJxQY.jpg",
             "release_date": "2010-11-05",
             "title": "Action Replayy",
-            "video": false,
+            "video": False,
             "vote_average": 5.4,
             "vote_count": 50
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/ymLLxJEm3HSM63A8lZ3oZAxiHR1.jpg",
             "genre_ids": [
                 28,
@@ -358,12 +358,12 @@ def main_page():
             "poster_path": "/98G5HS7hU03wjiTjJ7SDuq20AHx.jpg",
             "release_date": "1973-11-07",
             "title": "Executive Action",
-            "video": false,
+            "video": False,
             "vote_average": 6.4,
             "vote_count": 26
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": null,
             "genre_ids": [
                 28,
@@ -377,12 +377,12 @@ def main_page():
             "poster_path": "/jWdz6qEu4ShWjQbzlOaIMUVIFsH.jpg",
             "release_date": "2021-12-09",
             "title": "Violence of Action",
-            "video": false,
+            "video": False,
             "vote_average": 0,
             "vote_count": 0
         },
         {
-            "adult": false,
+            "adult": False,
             "backdrop_path": "/qc5yiiYYVPxsUgQVnaWQQ6glkY7.jpg",
             "genre_ids": [],
             "id": 693357,
@@ -393,7 +393,7 @@ def main_page():
             "poster_path": "/dGteNP779HON7O944hkKeOHkQjs.jpg",
             "release_date": "2016-02-19",
             "title": "Futabu Live Action",
-            "video": false,
+            "video": False,
             "vote_average": 9,
             "vote_count": 1
         }
