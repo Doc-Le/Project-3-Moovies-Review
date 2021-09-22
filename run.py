@@ -1,3 +1,4 @@
+import os
 from app import app
 
 IP = os.environ.get("IP", app.config["IP"])
