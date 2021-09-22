@@ -34,12 +34,12 @@
             </div>
         </div>
     </header>
-
-    <h2>Movies</h2>
+    <main class="container">
+        <h2>Movies</h2>
     <div class="row">
         {% for movie in movies %}
         <div class="col-sm-3">
-            <div class="card mb-3" style="max-width: 200px;">
+            <div class="card mb-3">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="img-fluid rounded-start" alt="{{movie.title}}">
@@ -58,6 +58,8 @@
         </div>
         {% endfor %}
     </div>
+    </main>
+    
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
