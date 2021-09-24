@@ -6,7 +6,7 @@ Milestone 3 - Code institute
   
 
 
-## 🏠 [Homepage](https://github.com/Doc-Le/Project-3-mooviesreview.git)
+## 🏠 [Homepage](https://moovies-review-app.herokuapp.com/)
 
 
 ## ✨ [Demo]()
