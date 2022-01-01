@@ -9,10 +9,6 @@ Milestone 3 - Code institute
 ## 🏠 [Homepage](https://moovies-review-app.herokuapp.com/)
 
 
-## ✨ [Demo]()
-
-<b>
-<br/>
 
 ### Description
 A watch-list app built with Flask using the TMDB API with CRUD and user authentication. The application makes use of the movie database API (tmdb).
