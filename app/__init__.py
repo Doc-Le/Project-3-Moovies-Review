@@ -1,11 +1,12 @@
-# import os
+import os
 from flask import Flask
-# from flask_pymongo  import PyMongo
+from flask_pymongo  import PyMongo
 
 app = Flask(__name__)
-# app.config['MONGO_URI'] = IP = os.environ.get("MONGO_URI", "mongodb://localhost:27017/test")
-
-# mongo = PyMongo(app)
+MONGO_URI = os.environ.get("MONGO_URI")
+print(MONGO_URI)
+app.config['MONGO_URI'] = MONGO_URI
+mongo = PyMongo(app)
 
 from app import home
 # from app import api
