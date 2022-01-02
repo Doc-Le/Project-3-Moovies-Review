@@ -20,11 +20,18 @@ Here are the features in summary:
 * User can search and review any movie.
 
 
-
 <br>
 ## Wireframe
 <br>
 
+
+| Page | Desktop | Tablet | Mobile |
+| ---- | ------- | ------ | ------ |
+|Initial|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/initial.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/initial_tablet.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/initial_mobile_.png)|
+|Sign-in|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/signin_form.pngg)|[view](https://doc-le.github.io/Project-Milestone-1/assets/wireframe/tablet/projects.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/signformtablet.png)|
+|Logged -in|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/logged-in.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/loggedin.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/loggedin_mobile_1.png)|
+|Search Results|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search_tablet_.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search_results_mobile_1_1.png)|
+|Results|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search_result.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search_resultstablet_1.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/result_mobile_1_2.png)|
 
 ## Deployment
 
