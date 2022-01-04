@@ -17,8 +17,8 @@ A watch-list app built with Flask using the TMDB API with CRUD and user authenti
 ### Features
 Here are the features in summary:
 * App displays popular movies, upcoming movies and latest movies
+* User can login.
 * User can search and review any movie.
-
 
 <br>
 ## Wireframe
@@ -73,6 +73,8 @@ The project was deployed to GitHub Pages using the following steps:
     * GitHub is used to store the project after being pushed from Git  
 7. [Mongodb](https://cloud.mongodb.com/)
     * GitHub is used to store the project after being pushed from Git    
+8. [API](https:///)
+    * GitHub is used to store the project after being pushed from Git        
 
 ### Installation and Set-up
 To view the app, open the live site link provided below on the README.
@@ -90,12 +92,6 @@ Here is a run through of how to set up the application:
 * **Step 7** : 
 * **Step ?** : 
 
-## Steps
-* pip install virtualenv
-* virtualenv venv
-* source venv/Scripts/activate
-* pip install -r requirements.txt
-* python run.py
 
 ### Requirements
 * This program requires python3.+ (and pip) installed, a guide on how to install python on various platforms can be found [here](https://www.python.org/)
@@ -117,6 +113,18 @@ This app was viewed on a variety of devices such as Desktop, Laptop, IPhone7, IP
 
 
 ## Known Bugs
+
+
+
+## Content
+
+All content was written by the developer
+
+
+## Media
+
+* Logo custom made by the developer with Adobe Illustrator
+* All images found [Image: API]
 
 <br></br>
 <br></br>
