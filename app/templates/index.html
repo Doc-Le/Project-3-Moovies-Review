@@ -37,7 +37,10 @@
     <main class="container">
         <h2>Movies</h2>
     <div class="row">
-        {% for movie in movies %}
+        {% if search_result == False %}
+        <!-- search form as centered -->
+        {% else %}
+        <!-- search form as header -->
         <div class="col-sm-3">
             <div class="card mb-3">
               <div class="row g-0">
@@ -56,7 +59,7 @@
               </div>
             </div>
         </div>
-        {% endfor %}
+        {% endif %}
     </div>
     </main>
     
