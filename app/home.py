@@ -1,6 +1,7 @@
 import json
 import logging
 
+from . import MOVIE_API_KEY
 from bson import json_util
 from app import (app, mongo)
 from app import app
@@ -11,17 +12,22 @@ from .models import (
     Movie,
     Review
 )
+from .review import get_movie_review
+from .tmdb import (
+    search_movies
+)
 
 ## root api direct to index.html (home page)
 
 @app.route("/", methods = ["GET", "POST"])
 def index():
+    method = request.method
     movies = []
     search_result = False
     if method == "POST":
         """return the information for <user_id>"""
-        # request.form["search"]
-        # search 3rd party api
+        query = request.form["query"]
+        movies = search_movies(query)
         # extract movie id list to search reviews in mongodb
         # reviews = mongo.db.reviews.find({})
         search_result = True
@@ -97,12 +103,17 @@ def logout():
     user = None
     return redirect("index.html", user=user, message=message)
 
+"""
+Authentication required
+User needs to sign-up and login to review
+"""
 @app.route("/reviews/<id>", methods = ["GET", "POST", "PUT", "DELETE"])
-def review():
-    user = User(authenticated=False)
-    movie = Movie(id=1)
+def review(id):
+    user = User(username="", password="", authenticated=False)
+    # movie = Movie(id)
+    movie = {}
     method = request.method
-    # user = session["user"]
+    #user = (user_id=session)    # user = session["user"]
 
     # """return the information for <user_id>"""
     # if user.authenticated not True:
@@ -128,12 +139,11 @@ def review():
     # set user session
     return render_template("review.html", user=user, movie=movie, method=method)
 
-
 def review_id(id):
     return mongo.db.reviews.find_one({ "_id": ObjectId(id) })
 
-# @app.route("/")
-# def main_page():
+ #@app.route("/")
+ #def main_page():
 #     movies = mongo.db.movies.find()
 #     return render_template("index.html", movies=movies)
 
