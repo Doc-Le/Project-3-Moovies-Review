@@ -45,7 +45,8 @@ class Movie:
     title,
     video,
     vote_average,
-    vote_coun,
+    vote_count,
+    review
   ):
     self.id = id
     self.adult = adult
@@ -61,10 +62,12 @@ class Movie:
     self.video = video
     self.vote_average = vote_average
     self.vote_count = vote_count
+    self.review = review
 
 class Review:
-  def __init__(self, username, movie_id, rate, comments):
+  def __init__(self, id, username, movie_id, rate, comments):
+    self.id = id
+    self.review_id = "{}_{}".format(movie_id, username)
     self.username = username
     self.movie_id = movie_id
     self.rate = rate
-    self.comments = comments
