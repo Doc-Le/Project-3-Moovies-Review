@@ -155,10 +155,10 @@ def review_id(id):
 #         "movies": movies,
 #     }
 
-# @app.route("/movies/<id>")
-# def get_movie_id(id):
-#     cursor = mongo.db.movies.find_one({ "_id": ObjectId(id) })
-#     movie = json.loads(json_util.dumps(cursor))
-#     return {
-#         "movie": movie,
-#     }
+#@app.route("/movies/<id>", methods = ["GET", "POST", "PUT", "DELETE"])
+  #def get_movie_id(id):
+     # cursor = mongo.db.movies.find_one({ "_id": ObjectId(id) })
+     # movie = json.loads(json_util.dumps(cursor))
+     # return {
+      ## "movie": movie,
+    #}

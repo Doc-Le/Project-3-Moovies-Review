@@ -16,4 +16,4 @@ mongo = PyMongo(app)
 # create_session(API_KEY)
 #  import tmdb.py
 
-from app import home
+from app import routes
