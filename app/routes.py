@@ -12,31 +12,43 @@ from .models import (
     Movie,
     Review
 )
-from .review import get_movie_review
 from .tmdb import (
     search_movies
+)
+from .utils import (
+    get_user_session,
+    clear_user_session,
 )
 
 ## root api direct to index.html (home page)
 
-@app.route("/", methods = ["GET", "POST"])
+@app.route("/", methods = ["GET"])
 def index():
-    method = request.method
-    movies = []
-    search_result = False
-    if method == "POST":
-        """return the information for <user_id>"""
-        query = request.form["query"]
-        movies = search_movies(query)
-        # extract movie id list to search reviews in mongodb
-        # reviews = mongo.db.reviews.find({})
-        search_result = True
+    context = {
+        "title": "",
+        "user": get_user_session(),
+        "show_signup": False,
+        "show_header_search": False
+    }
+    return render_template("index.html", context=context)
 
-    return render_template("index.html", movies=movies, search_result=search_result)
+@app.route("/search", methods = ["POST"])
+def search():
+    movies = []
+    query = request.form["query"]
+    movies = search_movies(query)
+    # extract movie id list to search reviews in mongodb
+    # reviews = mongo.db.reviews.find({})
+    context = {
+        "title": "Result",
+        "user": get_user_session(),
+        "movies": movies,
+        "show_header_search": True
+    }
+    return render_template("search_result.html", context=context)
 
 @app.route("/profile/<username>", methods = ["GET", "POST", "PUT", "DELETE"])
 def profile(username):
-    user = {}
     method = request.method
     # user = session["user"]
 
@@ -60,30 +72,44 @@ def profile(username):
     else: # GET
         """return the information for <user_id>"""
 
+    context = {
+        "title": "Profile",
+        "user": get_user_session(),
+        "show_header_search": True,
+        "method": method
+    }
+
     # check if user is logged in   
     # set user session
-    return render_template("profile.html", user=user, method=method)
+    return render_template("profile.html", context=context)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     show_message = False
-    message = "Success registered user!"
     method = request.method
+    message = "Success registered user!"
     if method == "POST":
         if request.form.get("password") == request.form.get("repeat-password"):
             username = request.form.get("username")
             password = request.form.get("password")
             # create user mongodb
-            message = "Success registered user!"
             show_message = True            
         else:
             message = "Both passwords must be equal!"
             show_message = True
-    return redirect("signup.html", message=message, show_message=show_message)
+    
+    context = {
+        "title": "Sign-up",
+        "user": get_user_session(),
+        "show_header_search": True,
+        "show_message": show_message,
+        "message": message,
+        "method": method
+    }
+    return render_template("signup.html", context=context)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    user = User(authenticated=False)
     message = "Success logged in!"
     method = request.method
     if method == "POST":
@@ -92,16 +118,23 @@ def login():
         # consult mongodb for user data
         # create user session
         # set user object
-
-    return redirect("login.html", user=user, message=message)
+    context = {
+        "title": "Login",
+        "user": get_user_session(),
+        "show_header_search": True,
+        "message": message,
+        "method": method
+    }
+    return render_template("login.html", context=context)    
 
 @app.route("/logout")
 def logout():
-    """Shows the logout option"""
-    message = "Logged out. Thanks for visiting Ratings!"
-    # clear session["user_id"]
-    user = None
-    return redirect("index.html", user=user, message=message)
+    context = {
+        "title": "",
+        "user": clear_user_session(),
+        "show_header_search": False
+    }
+    return render_template("index.html", context=context)
 
 """
 Authentication required
@@ -109,22 +142,26 @@ User needs to sign-up and login to review
 """
 @app.route("/reviews/<id>", methods = ["GET", "POST", "PUT", "DELETE"])
 def review(id):
-    user = User(username="", password="", authenticated=False)
-    # movie = Movie(id)
-    movie = {}
     method = request.method
-    #user = (user_id=session)    # user = session["user"]
+    subtitle = "Review form"
 
     # """return the information for <user_id>"""
     # if user.authenticated not True:
-    #     method = ""
-    #     return render_template("profile.html", user=user, method=method)
+    #   method = ""
+    #   context = {
+    #       "title": "",
+    #       "user": get_user_session(),
+    #       "show_signup": True,
+    #       "show_header_search": False
+    #   }
+    #   return render_template("login.html", context=context)
     print(request.form)
 
     if method == "POST":
         """return the information for <user_id>"""
         # request.form["username"]
         # request.form["password"]
+        
 
     if method == "PUT":
         """return the information for <movie_id>"""
@@ -133,32 +170,16 @@ def review(id):
         """return the information for <movie_id>"""
 
     else: # GET
-        """return the information for <movie_id>"""
+        """return movie review form"""
+
+    context = {
+        "title": "Review",
+        "subtitle": subtitle,
+        "user": get_user_session(),
+        "show_header_search": True,
+        "method": method
+    }
 
     # check if user is logged in
     # set user session
-    return render_template("review.html", user=user, movie=movie, method=method)
-
-def review_id(id):
-    return mongo.db.reviews.find_one({ "_id": ObjectId(id) })
-
- #@app.route("/")
- #def main_page():
-#     movies = mongo.db.movies.find()
-#     return render_template("index.html", movies=movies)
-
-# @app.route("/movies")
-# def get_movies():
-#     cursor = mongo.db.movies.find()
-#     movies = json.loads(json_util.dumps(cursor))
-#     return {
-#         "movies": movies,
-#     }
-
-#@app.route("/movies/<id>", methods = ["GET", "POST", "PUT", "DELETE"])
-  #def get_movie_id(id):
-     # cursor = mongo.db.movies.find_one({ "_id": ObjectId(id) })
-     # movie = json.loads(json_util.dumps(cursor))
-     # return {
-      ## "movie": movie,
-    #}
+    return render_template("review.html", context=context)
