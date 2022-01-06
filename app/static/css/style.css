@@ -1,10 +1,11 @@
-.search-form-left, .search-form-center {
+.search-form-center {
     width: 100%;
     max-width: 330px;
     padding: 15px;
-    margin: 0;
+    margin: auto;
+    text-align: center;
 }
 
-.search-form-center {
-    margin: auto;
+.search-form-center img {
+    margin: 50px auto;
 }
