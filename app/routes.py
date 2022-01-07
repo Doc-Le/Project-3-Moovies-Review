@@ -6,10 +6,10 @@ from bson import json_util
 from app import (app, mongo)
 from app import app
 from bson.objectid import ObjectId
-from flask import request, render_template, session, redirect
-from .db import (get_user,insert_user,authenticate_user)
-from .models import (User, Movie, Review)
-from .tmdb import (search_movies)
+from flask import request, render_template, redirect
+from .db import (get_movie_user_review, get_user, insert_review,insert_user,authenticate_user, update_review)
+from .models import (User, Movie, Review, UrlRedirect)
+from .tmdb import (search_movies, get_movie)
 from .utils import (set_user_session, get_user_session, clear_user_session, is_authenticated)
 
 @app.route("/", methods = ["GET"])
@@ -72,6 +72,7 @@ def profile(username):
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+    url_redirect = UrlRedirect(request)
     message = ""
     show_message = False
     username_exist = False
@@ -79,7 +80,6 @@ def signup():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        repeatPassword = request.form.get("repeat-password")
 
         if get_user(username) != None:
             # Validate username already exists
@@ -90,12 +90,13 @@ def signup():
             # return message to make sure both passwords are equal
             user = { "username": username, "password": password }
             insert_user(user)
-            message = "Success registered user!"
+            message = "Success registered user {}!".format(username)
             show_message = True
 
     context = {
         "title": "Sign-up",
         "user": get_user_session(),
+        "url_redirect": url_redirect,        
         "username_exist": username_exist,
         "show_header_search": True,
         "show_message": show_message,
@@ -106,28 +107,24 @@ def signup():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     message = "Success logged in!"
-    show_signup = False
     show_message = False
     show_form = True
-    redirect_to = request.args.get("red_url")
-    redirect_form = ""
-
-    if redirect_to != None:
-        show_signup = True
-        redirect_form = "?red_url={}".format(redirect_to)
+    url_redirect = UrlRedirect(request)
+    show_signup = bool(url_redirect != None)
 
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         authenticated = authenticate_user(username=username, password=password)
+
         if authenticated != True:
            message = "Username or Password incorrect. Please try again!"
            show_message = True
            show_form = True
         else:
            set_user_session(username=username, authenticated=authenticated)
-           if redirect_to != None:
-                return redirect(redirect_to,code=302)  
+           if url_redirect.to != None:
+                return redirect(url_redirect.to,code=302)  
            else:
                 message = "Success logged in with username {}!".format(username)
                 show_message = True
@@ -136,7 +133,7 @@ def login():
     context = {
         "title": "Login",
         "user": get_user_session(),
-        "redirect_form": redirect_form,
+        "url_redirect": url_redirect,
         "show_header_search": True,
         "show_signup": show_signup,
         "show_message": show_message,
@@ -157,35 +154,37 @@ def logout():
 
 @app.route("/reviews/<id>", methods = ["GET", "POST", "PUT", "DELETE"])
 def review(id):
-    method = request.method
-    subtitle = "Review form"
+    message = ""
     user = get_user_session()
+    username =  user["username"]
+    movie = get_movie(int(id))
+    review = get_movie_user_review(id, username)
+    rate = 0
 
     # Check if user authenticated otherwise redirect to login
     if is_authenticated():
-       return redirect("/login?red_url={}".format(request.path),code=302)
+        return redirect("/login?red_url={}".format(request.path),code=302)
 
-    if method == "POST":
-        """return the information for <user_id>"""
-        # request.form["username"]
-        # request.form["password"]
-        
+    if review != None:
+        rate = review["rate"]
 
-    if method == "PUT":
-        """return the information for <movie_id>"""
-
-    if method == "DELETE":
-        """return the information for <movie_id>"""
-
-    else: # GET
-        """return movie review form"""
+    if request.method == "POST":
+        rate = float(request.form["options"])
+        if review != None:
+            update_review(review["id"], rate)
+            message = "Thanks for updating your previous review this movie!"
+        else:
+            insert_review(id, username, rate)
+            message = "Thanks for reviewing this movie!"
+        movie = get_movie(int(id))
 
     context = {
         "title": "Review",
-        "subtitle": subtitle,
         "user": get_user_session(),
+        "movie": movie,
+        "rate": int(rate),
         "show_header_search": True,
-        "method": method
+        "message": message
     }
 
     # check if user is logged in
