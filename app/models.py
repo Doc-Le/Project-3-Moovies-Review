@@ -1,7 +1,24 @@
-class User:
-  def __init__(self, username, password, authenticated):
+
+import json
+
+"""
+Json serializable class
+Parse any object to JSON string
+source: https://stackoverflow.com/a/11062658
+"""
+class JsonSerializable(object):
+    def toJson(self):
+        return json.dumps(self.__dict__)
+
+    def __repr__(self):
+        return self.toJson()
+
+"""
+User model inherets JsonSerializable class
+"""
+class User(JsonSerializable):
+  def __init__(self, username, authenticated):
     self.username = username
-    self.password = password
     self.authenticated = authenticated
 
 """
@@ -29,7 +46,7 @@ class User:
   "vote_count": 26
 }
 """
-class Movie:
+class Movie(JsonSerializable):
   def __init__(
     self, 
     id,
@@ -64,7 +81,7 @@ class Movie:
     self.vote_count = vote_count
     self.review = review
 
-class Review:
+class Review(JsonSerializable):
   def __init__(self, id, username, movie_id, rate, comments):
     self.id = id
     self.review_id = "{}_{}".format(movie_id, username)
