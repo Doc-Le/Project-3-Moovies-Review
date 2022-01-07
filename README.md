@@ -74,9 +74,13 @@ The project was deployed to GitHub Pages using the following steps:
 7. [Mongodb](https://cloud.mongodb.com/)
     * Mongodb is used to store the project database    
 8. [API](https://www.themoviedb.org/documentation/api/sessions)
-    * Movie Database to access the API.        
+    * Movie Database to access the API.      
+
+
 
 ### Installation and Set-up
+
+
 To view the app, open the live site link provided below on the README.
 Here is a run through of how to set up the application:
 * **Step 1** : Clone this repository using **`git clone https://github.com/Doc-Le/Project-3-mooviesreview.git`**, or downloading a ZIP file of the code.
@@ -88,12 +92,11 @@ Here is a run through of how to set up the application:
         * Note that you can exit the virtual environment by running the command **`deactivate`**
 * **Step 4** : Download the all dependencies in the requirements.txt using **`pip install -r requirements.txt`**
 * **Step 5** : Go to the [the movie database (TMDB) 
-* **Step 6** : 
-* **Step 7** : 
-* **Step ?** : 
+
 
 
 ### Requirements
+
 * This program requires python3.+ (and pip) installed, a guide on how to install python on various platforms can be found [here](https://www.python.org/)
 * MongoDB was used in this project as the database client, however fell free to use whichever client you prefer 
 * To download MongoDB, follow this [link](https://www.mongodb.com/try/download/community/)
@@ -113,6 +116,8 @@ This app was viewed on a variety of devices such as Desktop, Laptop, IPhone7, IP
 
 
 ## Known Bugs
+
+
 
 
 
