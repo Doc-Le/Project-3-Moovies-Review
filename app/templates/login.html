@@ -7,23 +7,34 @@
       <h1>Login</h1>
     </div>
     <div class="card-body">
-      <form id="login" action="/login" method="POST" class="row row-cols-lg-auto g-3 align-items-center">
+      {% if context.show_message == True %}
+      <h3>{{ context.message }}</h3>
+      {% endif %}      
+      {% if context.show_form == True %}
+      <form id="login" action="/login{{ context.redirect_form }}" method="POST" class="row row-cols-lg-auto g-3 align-items-center" novalidate>
         <div class="col-12">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" placeholder="Username">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+          <div class="invalid-feedback">
+            Please provide a valid username.
+          </div>  
         </div>
         <div class="col-12">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+          <div class="invalid-feedback">
+            Please provide a valid password.
+          </div>  
         </div>
         <div class="col-12">
           <button type="submit" class="btn btn-secondary">Login</button>      
         </div>
       </form>
+      {% endif %}    
     </div>
   </div>
 </div>
-{% if context.show_signup == True  %}
+{% if context.show_signup == True %}
 <div class="d-flex justify-content-center">
   <label>or</label>
 </div>
@@ -35,4 +46,29 @@
   </div>
 </div>
 {% endif %}
+{% endblock %}
+
+{% block postloadjs_extra %}
+  <script type="text/javascript">
+    // example from: https://getbootstrap.com/docs/5.0/forms/validation/#custom-styles
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('#login')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }            
+            form.classList.add('was-validated') 
+          }, false)
+        })
+    })()
+  </script>
 {% endblock %}
