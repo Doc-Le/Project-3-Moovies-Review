@@ -32,3 +32,13 @@ Clear user session and set guest user object
 """
 def clear_user_session():
     session.pop('user', None)
+
+
+"""
+Process MongoDB cursor iteration
+"""
+def process_cursor(cursor):
+    collection = []
+    for operation in cursor:
+        collection.append(operation)
+    return collection
