@@ -2,62 +2,60 @@
 
 {% block main %}
 <div class="d-flex justify-content-center">
-    <div class="card">
-        <div class="card-header">
-            <h1>{{ context.subtitle }}</h1>  
-        </div>
-        <div class="card-body">        
-        {% if method == 'POST' %}
-            <!--
-                Save review rate Form HTML
-                *******                   
-                successful review message
-                show movie list review
-            -->
-        {% elif method == 'PUT' %}
-            <!--
-                Update review rate Form HTML
-                *******                
-                username
-                old password
-                new password
-                repeat new password
-            -->
-            {% if context.user.authenticated == True %}
-            <!--
-                show update review form html
-            -->                              
-            {% endif %}            
-        {% elif method == 'DELETE' %}
-            <!--
-                Delete review Form HTML
-                *******
-                ### delete account
-                message "are you sure?"
-                successful return to /
-            -->
+    <div class="card text-center">
+        {% if context.movie.backdrop_path == None %}   
+        <img src="{{url_for('static', filename = 'images/movie-empty.jpg')}}" class="card-img-top" alt="{{context.movie.title}}">
         {% else %}
-            <!--
-                Review Form HTML
-                *******
-                show movie review list
-                username
-                change password > /profile/<username> - PUT
-                reviews count
-                list reviews (view, edit, remove)
-            -->
-            {% if context.user.authenticated == True %}
-            <!--
-                show create review form html
-            -->                              
-            {% endif %}
+        <img src="https://image.tmdb.org/t/p/w500/{{ context.movie.backdrop_path }}" class="card-img-top" alt="{{context.movie.title}}">
         {% endif %}
-        {% if context.user.authenticated == False %}
-        <!--
-            show sign-up and login buttons to be able to review
-        -->                
-        {% endif %}        
+        <div class="card-body"> 
+            <h5 class="card-title">{{ context.movie.title }} ({{ context.movie.year }})</h5>
+            <p class="card-text">{{ context.movie.overview }}</p>
+            <div class="mb-5">
+                <span><i class="bi bi-star-fill"></i>&nbsp;{{ context.movie.rate_average }}</span>&nbsp;
+                <span><i class="bi bi-people-fill"></i>&nbsp;{{ context.movie.rate_count }}</span>
+            </div>
+            <div class="mb-5">
+                <label class="form-label">Rate this movie</label>
+                <form id="review" action="/reviews/{{ context.movie.id }}" method="POST" class="align-items-center" novalidate>
+                    {% for rate in range(6) %}
+                    <input type="radio" class="btn-check" name="options" id="rate_{{ rate }}" value="{{rate}}" autocomplete="off">
+                    <label class="btn btn-outline-secondary me-1" for="rate_{{ rate }}">{{ rate }}</label>
+                    {% endfor %}
+                </form>
+            </div>
+            {% if context.message != "" %}
+            <div class="mb-2 mt-2">
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                      <p>{{ context.message }}</p>
+                    </blockquote>
+                </figure>
+            </div>
+            {% endif %}
         </div>        
     </div>
   </div>
+{% endblock %}
+
+{% block postloadjs_extra %}
+  <script type="text/javascript">
+    (function () {
+      'use strict'      
+      const checkedRadio = document.querySelector('#rate_{{ context.rate }}')
+      const radios = document.querySelectorAll('.btn-check')
+      Array.prototype.slice.call(radios)
+        .forEach(function (radio) {
+            radio.addEventListener('click', function (event) {
+                event.preventDefault()
+                event.stopPropagation()       
+                const form = document.querySelector('#review')
+                form.submit();
+          }, false)
+        })
+      if (checkedRadio) {
+        checkedRadio.checked = true;
+      }
+    })()
+  </script>
 {% endblock %}
