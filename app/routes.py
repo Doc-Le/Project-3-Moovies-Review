@@ -6,21 +6,11 @@ from bson import json_util
 from app import (app, mongo)
 from app import app
 from bson.objectid import ObjectId
-from flask import request, render_template, session
-from .models import (
-    User,
-    Movie,
-    Review
-)
-from .tmdb import (
-    search_movies
-)
-from .utils import (
-    get_user_session,
-    clear_user_session,
-)
-
-## root api direct to index.html (home page)
+from flask import request, render_template, session, redirect
+from .db import (get_user,insert_user,authenticate_user)
+from .models import (User, Movie, Review)
+from .tmdb import (search_movies)
+from .utils import (set_user_session, get_user_session, clear_user_session, is_authenticated)
 
 @app.route("/", methods = ["GET"])
 def index():
@@ -50,13 +40,10 @@ def search():
 @app.route("/profile/<username>", methods = ["GET", "POST", "PUT", "DELETE"])
 def profile(username):
     method = request.method
-    # user = session["user"]
-
-    # """return the information for <user_id>"""
-    # if user.authenticated not True:
-    #     method = ""
-    #     return render_template("profile.html", user=user, method=method)
-    print(request.form)
+    
+    # Check if user authenticated otherwise redirect to login
+    if is_authenticated():
+       return redirect("/login?red_url={}".format(request.path),code=302)
 
     if method == "POST":
         """return the information for <user_id>"""
@@ -85,77 +72,98 @@ def profile(username):
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
+    message = ""
     show_message = False
-    method = request.method
-    message = "Success registered user!"
-    if method == "POST":
-        if request.form.get("password") == request.form.get("repeat-password"):
-            username = request.form.get("username")
-            password = request.form.get("password")
-            # create user mongodb
-            show_message = True            
+    username_exist = False
+
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        repeatPassword = request.form.get("repeat-password")
+
+        if get_user(username) != None:
+            # Validate username already exists
+            message = "Username {} already exist. Please, choose another username".format(username)
+            username_exist = True
+            show_message = False
         else:
-            message = "Both passwords must be equal!"
+            # return message to make sure both passwords are equal
+            user = { "username": username, "password": password }
+            insert_user(user)
+            message = "Success registered user!"
             show_message = True
-    
+
     context = {
         "title": "Sign-up",
         "user": get_user_session(),
+        "username_exist": username_exist,
         "show_header_search": True,
         "show_message": show_message,
-        "message": message,
-        "method": method
+        "message": message
     }
     return render_template("signup.html", context=context)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     message = "Success logged in!"
-    method = request.method
-    if method == "POST":
+    show_signup = False
+    show_message = False
+    show_form = True
+    redirect_to = request.args.get("red_url")
+    redirect_form = ""
+
+    if redirect_to != None:
+        show_signup = True
+        redirect_form = "?red_url={}".format(redirect_to)
+
+    if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        # consult mongodb for user data
-        # create user session
-        # set user object
+        authenticated = authenticate_user(username=username, password=password)
+        if authenticated != True:
+           message = "Username or Password incorrect. Please try again!"
+           show_message = True
+           show_form = True
+        else:
+           set_user_session(username=username, authenticated=authenticated)
+           if redirect_to != None:
+                return redirect(redirect_to,code=302)  
+           else:
+                message = "Success logged in with username {}!".format(username)
+                show_message = True
+                show_form = False
+
     context = {
         "title": "Login",
         "user": get_user_session(),
+        "redirect_form": redirect_form,
         "show_header_search": True,
-        "message": message,
-        "method": method
+        "show_signup": show_signup,
+        "show_message": show_message,
+        "show_form": show_form,
+        "message": message
     }
     return render_template("login.html", context=context)    
 
 @app.route("/logout")
 def logout():
+    clear_user_session()
     context = {
         "title": "",
-        "user": clear_user_session(),
+        "user": get_user_session(),
         "show_header_search": False
     }
     return render_template("index.html", context=context)
 
-"""
-Authentication required
-User needs to sign-up and login to review
-"""
 @app.route("/reviews/<id>", methods = ["GET", "POST", "PUT", "DELETE"])
 def review(id):
     method = request.method
     subtitle = "Review form"
+    user = get_user_session()
 
-    # """return the information for <user_id>"""
-    # if user.authenticated not True:
-    #   method = ""
-    #   context = {
-    #       "title": "",
-    #       "user": get_user_session(),
-    #       "show_signup": True,
-    #       "show_header_search": False
-    #   }
-    #   return render_template("login.html", context=context)
-    print(request.form)
+    # Check if user authenticated otherwise redirect to login
+    if is_authenticated():
+       return redirect("/login?red_url={}".format(request.path),code=302)
 
     if method == "POST":
         """return the information for <user_id>"""
