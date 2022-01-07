@@ -10,10 +10,10 @@
           {% if context.show_message == True %}
           <h3>{{ context.message }}</h3>
           <div class="col-12">
-              Click on to <a href="/login" class="btn btn-secondary">Login</a>
+              Click on to <a href="/login{{ context.url_redirect.params }}" class="btn btn-secondary">Login</a>
           </div>
           {% else %}
-          <form id="signup" action="/signup" method="POST" class="row row-cols-lg-auto g-3 align-items-center" novalidate>
+          <form id="signup" action="/signup{{ context.url_redirect.params }}" method="POST" class="row row-cols-lg-auto g-3 align-items-center" novalidate>
             <div class="col-12">
               <label for="username" class="form-label">Username</label>
               <input type="text" class="form-control {{ 'is-invalid' if context.username_exist == True }}" id="username" name="username" placeholder="Username" required>
@@ -25,7 +25,6 @@
                 {% endif %}
               </div>
             </div>
-            <!-- Add password form (password/valid password/Logout/repeated password and signup button) -->
             <div class="col-12">
               <label for="password" class="form-label">Password</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
@@ -40,7 +39,6 @@
                 Please provide a valid repeated password.
               </div>
             </div>
-            <!-- Add signup button) -->
             <div class="col-12">
               <button type="submit" class="btn btn-secondary">Sign-up</button>      
             </div>
