@@ -1,5 +1,7 @@
 
 
+from pymongo import cursor
+from .utils import process_cursor
 from app import (app, mongo)
 
 """ 
@@ -56,6 +58,58 @@ def get_movie_reviews(movie_id):
     return mongo.db.reviews.find({ "movie_id": movie_id })
 
 """ 
+Count movie reviews
+"""
+def get_movie_reviews_count(movie_id):
+    movie_id = int(movie_id)
+    cursor = get_movie_reviews(movie_id)
+    reviews = process_cursor(cursor)
+    return len(reviews)
+
+""" 
+Get movie reviews average
+"""
+def get_movie_reviews_average(movie_id):
+    movie_id = int(movie_id)
+    average = 0
+    count = get_movie_reviews_count(movie_id)
+
+    if count == 1:
+        review = mongo.db.reviews.find_one({ "movie_id": movie_id })
+        if "rate" in review:
+            average = float(review["rate"])
+    else:
+        # Example from : https://docs.mongodb.com/manual/reference/operator/aggregation/avg/#use-in--group-stage
+        cursor = mongo.db.reviews.aggregate([
+            {
+                "$match" : {
+                    "movie_id" : {
+                        "$eq" : movie_id
+                    } 
+                }
+            },        
+            { 
+                "$group": { 
+                    "_id": "$movie_id", 
+                    "average": { 
+                        "$avg": "$rate" 
+                    } 
+                }
+            }
+        ])
+        result = process_cursor(cursor)
+        if len(result) > 0:
+            average = float("{0:.1f}".format(result[0]["average"]))
+    return average
+
+""" 
+Get user movie review
+"""
+def get_movie_user_review(movie_id, username): 
+    movie_id = int(movie_id)
+    return mongo.db.reviews.find_one({ "movie_id": movie_id, "username": username })
+
+""" 
 Get user reviews
 """
 def get_user_reviews(username):
@@ -65,16 +119,14 @@ def get_user_reviews(username):
 Insert review
 """
 def insert_review(movie_id, username, rate):
-    review = get_review_json(movie_id, username, rate)
+    review = get_review_json(int(movie_id), username, rate)
     mongo.db.reviews.insert_one(review)
 
 """ 
 Update review
 """
 def update_review(id, rate):
-    old_review = get_review(id)
-    review = { "id": id, "rate" : rate }
-    mongo.db.reviews.update_one(old_review, review)
+    mongo.db.reviews.update_one({ "id" : id }, { "$set" : { "rate" : rate } })
 
 """ 
 Delete review
