@@ -1,18 +1,34 @@
-from .models import (
-    User,
-)
+from flask import session
+
+
+"""
+Set user object from session
+"""
+def set_user_session(username, authenticated):
+    session['user'] = {
+        "username": username,
+        "authenticated": authenticated
+    }
 
 """
 Get user object from session
 """
 def get_user_session():
-    return User(username ="guest", password="", authenticated=False)
+    if 'user' in session:
+        return session['user']
+    else:
+        set_user_session(username="guest", authenticated=False)
+        return session['user']
+
+"""
+Is authenticated
+"""
+def is_authenticated():
+    user = get_user_session()
+    return bool(user['authenticated'] == False)
 
 """
 Clear user session and set guest user object
 """
 def clear_user_session():
-    # clear user session
-    # set guest user
-    user = get_user_session()
-    return user
+    session.pop('user', None)
