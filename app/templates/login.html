@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-<!-- Block main login) -->
+
 {% block main %}
 <div class="d-flex justify-content-center">
   <div class="card">
@@ -11,7 +11,7 @@
       <h3>{{ context.message }}</h3>
       {% endif %}      
       {% if context.show_form == True %}
-      <form id="login" action="/login{{ context.redirect_form }}" method="POST" class="row row-cols-lg-auto g-3 align-items-center" novalidate>
+      <form id="login" action="/login{{ context.url_redirect.params }}" method="POST" class="row row-cols-lg-auto g-3 align-items-center" novalidate>
         <div class="col-12">
           <label for="username" class="form-label">Username</label>
           <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
@@ -34,7 +34,6 @@
     </div>
   </div>
 </div>
-<!-- if sign-up option ) -->
 {% if context.show_signup == True %}
 <div class="d-flex justify-content-center">
   <label>or</label>
@@ -42,7 +41,7 @@
 <div class="d-flex justify-content-center">
   <div class="card">
     <div class="card-body">
-      <a href="/signup" class="btn btn-secondary">Sign-up</a>
+      <a href="/signup{{ context.url_redirect.params }}" class="btn btn-secondary">Sign-up</a>
     </div>
   </div>
 </div>
