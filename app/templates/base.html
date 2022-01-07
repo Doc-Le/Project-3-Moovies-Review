@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <!-- Required meta tags -->
@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Moovies Review {{ ' > ' +  context.title if context.title != "" }}</title>
 </head>
-<!-- Main body logo header and sign images -->
-<body>
+
+<body class="d-flex flex-column h-100">
     <header class="py-3 mb-3 border-bottom">
         <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
             <a href="/" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none">
@@ -33,7 +33,6 @@
                     {% endif %}
                     <label>{{ context.user.username }}</label>
                 </a>
-                <!-- Add dropdown menu (Login/Sign-up/Logout) -->
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="login">
                     {% if context.user.authenticated == False %}
                     <li><a class="dropdown-item" href="/login">Login</a></li>
@@ -56,8 +55,12 @@
             </div>
         </div>
     </main>
-    <footer>
-        <!-- todo simple footer-->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <span class="text-muted">Powered by <a href="https://www.themoviedb.org" target="_blank">https://www.themoviedb.org</a>.</span>
+            </div>
+        </div>
     </footer>
     <!-- Optional JavaScript; choose one of the two! -->
 
