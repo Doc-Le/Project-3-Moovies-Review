@@ -3,7 +3,7 @@ import tmdbsimple as tmdb
 from .models import (
     Movie
 )
-
+# Connect tmdb.API search and get movies #
 tmdb.API_KEY = MOVIE_API_KEY
 tmdb.REQUESTS_TIMEOUT = (2, 5)
 
