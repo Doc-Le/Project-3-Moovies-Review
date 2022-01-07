@@ -70,11 +70,11 @@ The project was deployed to GitHub Pages using the following steps:
 5. [GitHub](https://github.com/Doc-Le/PhysioActivities.git)
     * GitHub is used to store the project after being pushed from Git 
 6. [Heroku](https://dashboard.heroku.com)
-    * GitHub is used to store the project after being pushed from Git  
+    * Heroku is used to deploy the project  
 7. [Mongodb](https://cloud.mongodb.com/)
-    * GitHub is used to store the project after being pushed from Git    
-8. [API](https:///)
-    * GitHub is used to store the project after being pushed from Git        
+    * Mongodb is used to store the project database    
+8. [API](https://www.themoviedb.org/documentation/api/sessions)
+    * Movie Database to access the API.        
 
 ### Installation and Set-up
 To view the app, open the live site link provided below on the README.
@@ -124,7 +124,7 @@ All content was written by the developer
 ## Media
 
 * Logo custom made by the developer with Adobe Illustrator
-* All images found [Image: API]
+* All images found [Image: API] (https://www.themoviedb.org/documentation/api/sessions)
 
 <br></br>
 <br></br>
