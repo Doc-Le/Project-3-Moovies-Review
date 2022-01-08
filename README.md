@@ -1,6 +1,8 @@
 
 Milestone 3 - Code institute 
 
+![Alt](/images/logo-header.png "Moovies review")
+
 <h1 align="center">Moovies review</h1>
 
   
@@ -16,7 +18,7 @@ A watch-list app built with Flask using the TMDB API with CRUD and user authenti
 <br/>
 ### Features
 Here are the features in summary:
-* App displays popular movies, upcoming movies and latest movies
+* App displays movies.
 * User can login.
 * User can search and review any movie.
 
@@ -105,18 +107,23 @@ Here is a run through of how to set up the application:
 
 The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
-W3C Markup Validator - Results (link)
+W3C Markup Validator - Results [link](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmoovies-review-app.herokuapp.com%2F)
 Testing User Stories from User Experience Section
 
+### Testing User Stories from User Experience Section
+  
+  * First Time user
+    1.	Upon entering the app, user is automatically greeted with an easily visible center page panel search. 
+    2.	Over the top right of the panel, you can guest icon, with a drop down menu (Login/Signup).
+    3.	User can search for any movie review without a login or signup
+    4.  User can only leave a review after signing in.
 
 ## Further Testing
 
-This app was tested on Google Chrome, Microsoft Edge, and Safari browsers
-This app was viewed on a variety of devices such as Desktop, Laptop, IPhone7, IPhone8
-
-
-## Known Bugs
-
+* The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
+* The website was viewed on a variety of devices such as Desktop, Laptop, iPhone7, iPhone 8 & iPhone X.
+* A large amount of testing was done to ensure that all pages were linking correctly.
+* Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
 
 
 
