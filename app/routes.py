@@ -24,14 +24,21 @@ def index():
 
 @app.route("/search", methods = ["POST"])
 def search():
+    query = None
     movies = []
-    query = request.form["query"]
-    movies = search_movies(query)
-    # extract movie id list to search reviews in mongodb
-    # reviews = mongo.db.reviews.find({})
+    
+    if request.form.get("query", None):
+        query = request.form["query"]
+    elif request.form.get("query_header", None):
+        query = request.form["query_header"]
+    
+    if query != None:
+        movies = search_movies(query)
+
     context = {
         "title": "Result",
         "user": get_user_session(),
+        "query": query,
         "movies": movies,
         "show_header_search": True
     }
