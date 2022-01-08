@@ -7,6 +7,7 @@
          <h1>Sign-Up</h1>
         </div>
         <div class="card-body">
+          <!-- added click on btn -->
           {% if context.show_message == True %}
           <h3>{{ context.message }}</h3>
           <div class="col-12">
@@ -18,6 +19,7 @@
               <label for="username" class="form-label">Username</label>
               <input type="text" class="form-control {{ 'is-invalid' if context.username_exist == True }}" id="username" name="username" placeholder="Username" required>
               <div class="invalid-feedback">
+                <!-- added context message -->
                 {% if context.username_exist == False %}
                   Please provide a valid username.
                 {% else %}
