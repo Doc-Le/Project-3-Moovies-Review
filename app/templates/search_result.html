@@ -2,37 +2,43 @@
 
 {% block main %}
     <div class="row">
-        {% for movie in context.movies %}
-        <div class="col-sm-3">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <span class="card-title">{{movie.title}}</span>
-                </div>
-                <div class="row g-0">
-                    <div class="col-md-4">
-                    {% if movie.poster_path == None %}   
-                    <img src="{{url_for('static', filename = 'images/movie-empty.jpg')}}" class="img-fluid rounded-bottom" alt="{{movie.title}}">
-                    {% else %}
-                    <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="img-fluid rounded-bottom" alt="{{movie.title}}">
-                    {% endif %}
+        {% if context.movies|length == 0 %}
+            <div class="col-sm-12">
+                <h3>No results for "{{ context.query }}"</h3>
+            </div>
+        {% else %}
+            {% for movie in context.movies %}
+            <div class="col-sm-3">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <span class="card-title">{{movie.title}}</span>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <span class="card-text">{{movie.year}}</span>
-                            </div>
-                            <div class="mb-3">
-                                <span><i class="bi bi-star-fill"></i>&nbsp;{{movie.rate_average}}</span>&nbsp;
-                                <span><i class="bi bi-people-fill"></i>&nbsp;{{movie.rate_count}}</span>
-                            </div>
-                            <div>
-                                <a href="/reviews/{{movie.id}}" class="btn btn-primary">Review</a>
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                        {% if movie.poster_path == None %}   
+                        <img src="{{url_for('static', filename = 'images/movie-empty.jpg')}}" class="img-fluid rounded-bottom" alt="{{movie.title}}">
+                        {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="img-fluid rounded-bottom" alt="{{movie.title}}">
+                        {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <span class="card-text">{{movie.year}}</span>
+                                </div>
+                                <div class="mb-3">
+                                    <span><i class="bi bi-star-fill"></i>&nbsp;{{movie.rate_average}}</span>&nbsp;
+                                    <span><i class="bi bi-people-fill"></i>&nbsp;{{movie.rate_count}}</span>
+                                </div>
+                                <div>
+                                    <a href="/reviews/{{movie.id}}" class="btn btn-primary">Review</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}
