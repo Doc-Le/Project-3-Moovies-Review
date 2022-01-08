@@ -21,8 +21,8 @@
                <img src="{{url_for('static', filename = 'images/logo-header.png')}}" alt="Moovie Review" class="{{ 'invisible' if context.show_header_search == False }}">
             </a>
             <div class="d-flex align-items-center">
-                <form class="w-100 me-3 {{ 'invisible' if context.show_header_search == False }}" id="search" action="/search" method="POST">
-                    <input id="query" name="query" type="text" class="form-control" placeholder="Search for Movies" />
+                <form class="w-100 me-3 {{ 'invisible' if context.show_header_search == False }}" id="search_header" action="/search" method="POST">
+                    <input id="query_header" name="query_header" type="text" class="form-control" placeholder="Search for Movies" />
                 </form>
                 <div class="flex-shrink-0 dropdown">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="login" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,7 +31,7 @@
                     {% else %}
                     <img src="{{url_for('static', filename = 'images/signed-in.png')}}" alt="Signed-In" width="32" height="32" class="rounded-circle">
                     {% endif %}
-                    <label>{{ context.user.username }}</label>
+                    <span>{{ context.user.username }}</span>
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="login">
                     {% if context.user.authenticated == False %}
