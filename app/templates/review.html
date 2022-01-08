@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+<!-- block main img  -->
 {% block main %}
 <div class="d-flex justify-content-center">
     <div class="card text-center">
@@ -8,6 +8,7 @@
         {% else %}
         <img src="https://image.tmdb.org/t/p/w500/{{ context.movie.backdrop_path }}" class="card-img-top" alt="{{context.movie.title}}">
         {% endif %}
+        <!-- created context.movie -->
         <div class="card-body"> 
             <h5 class="card-title">{{ context.movie.title }} ({{ context.movie.year }})</h5>
             <p class="card-text">{{ context.movie.overview }}</p>
@@ -37,7 +38,7 @@
     </div>
   </div>
 {% endblock %}
-
+<!-- created block postloadjs/ -->
 {% block postloadjs_extra %}
   <script type="text/javascript">
     (function () {
