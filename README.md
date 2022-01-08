@@ -1,9 +1,13 @@
 
 Milestone 3 - Code institute 
 
-[Alt](/images/logo-header.png "Moovies review")
+
+![Alt](/images/logo-header.png "Moovies review")
+
+
 
 <h1 align="center">Moovies review</h1>
+
 
   
 
