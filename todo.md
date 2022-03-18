@@ -7,3 +7,4 @@
 7. Movie database API connection
 8. UI adjustments
 9. Readme.md update
+10.
