@@ -289,7 +289,7 @@
             "poster_path": "/dXkMSDU9EjCUY4eEmvYwpZIoobH.jpg",
             "release_date": "2012-12-24",
             "title": "Violence of Action",
-            "video": True,
+            "video": false,
             "vote_average": 6.5,
             "vote_count": 12
         },
