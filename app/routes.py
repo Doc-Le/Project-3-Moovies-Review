@@ -7,12 +7,13 @@ from app import (app, mongo)
 from app import app
 from bson.objectid import ObjectId
 from flask import request, render_template, redirect
-from .db import (get_movie_user_review, get_user, insert_review,insert_user,authenticate_user, update_review)
+from .db import (get_movie_user_review, get_user, insert_review, insert_user, authenticate_user, update_review)
 from .models import (User, Movie, Review, UrlRedirect)
 from .tmdb import (search_movies, get_movie)
 from .utils import (set_user_session, get_user_session, clear_user_session, is_authenticated)
 
-@app.route("/", methods = ["GET"])
+
+@app.route("/", methods=["GET"])
 def index():
     context = {
         "title": "",
@@ -22,16 +23,17 @@ def index():
     }
     return render_template("index.html", context=context)
 
-@app.route("/search", methods = ["POST"])
+
+@app.route("/search", methods=["POST"])
 def search():
     query = None
     movies = []
-    
+
     if request.form.get("query", None):
         query = request.form["query"]
     elif request.form.get("query_header", None):
         query = request.form["query_header"]
-    
+
     if query != None:
         movies = search_movies(query)
 
@@ -44,13 +46,14 @@ def search():
     }
     return render_template("search_result.html", context=context)
 
-@app.route("/profile/<username>", methods = ["GET", "POST", "PUT", "DELETE"])
+
+@app.route("/profile/<username>", methods=["GET", "POST", "PUT", "DELETE"])
 def profile(username):
     method = request.method
-    
+
     # Check if user authenticated otherwise redirect to login
     if is_authenticated():
-       return redirect("/login?red_url={}".format(request.path),code=302)
+        return redirect("/login?red_url={}".format(request.path), code=302)
 
     if method == "POST":
         """return the information for <user_id>"""
@@ -63,7 +66,7 @@ def profile(username):
     if method == "DELETE":
         """return the information for <user_id>"""
 
-    else: # GET
+    else:  # GET
         """return the information for <user_id>"""
 
     context = {
@@ -73,9 +76,10 @@ def profile(username):
         "method": method
     }
 
-    # check if user is logged in   
+    # check if user is logged in
     # set user session
     return render_template("profile.html", context=context)
+
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -95,7 +99,7 @@ def signup():
             show_message = False
         else:
             # return message to make sure both passwords are equal
-            user = { "username": username, "password": password }
+            user = {"username": username, "password": password}
             insert_user(user)
             message = "Success registered user {}!".format(username)
             show_message = True
@@ -103,13 +107,14 @@ def signup():
     context = {
         "title": "Sign-up",
         "user": get_user_session(),
-        "url_redirect": url_redirect,        
+        "url_redirect": url_redirect,
         "username_exist": username_exist,
         "show_header_search": True,
         "show_message": show_message,
         "message": message
     }
     return render_template("signup.html", context=context)
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -125,14 +130,14 @@ def login():
         authenticated = authenticate_user(username=username, password=password)
 
         if authenticated != True:
-           message = "Username or Password incorrect. Please try again!"
-           show_message = True
-           show_form = True
+            message = "Username or Password incorrect. Please try again!"
+            show_message = True
+            show_form = True
         else:
-           set_user_session(username=username, authenticated=authenticated)
-           if url_redirect.to != None:
-                return redirect(url_redirect.to,code=302)  
-           else:
+            set_user_session(username=username, authenticated=authenticated)
+            if url_redirect.to != None:
+                return redirect(url_redirect.to, code=302)
+            else:
                 message = "Success logged in with username {}!".format(username)
                 show_message = True
                 show_form = False
@@ -147,7 +152,8 @@ def login():
         "show_form": show_form,
         "message": message
     }
-    return render_template("login.html", context=context)    
+    return render_template("login.html", context=context)
+
 
 @app.route("/logout")
 def logout():
@@ -159,18 +165,19 @@ def logout():
     }
     return render_template("index.html", context=context)
 
-@app.route("/reviews/<id>", methods = ["GET", "POST", "PUT", "DELETE"])
+
+@app.route("/reviews/<id>", methods=["GET", "POST", "PUT", "DELETE"])
 def review(id):
     message = ""
     user = get_user_session()
-    username =  user["username"]
+    username = user["username"]
     movie = get_movie(int(id))
     review = get_movie_user_review(id, username)
     rate = 0
 
     # Check if user authenticated otherwise redirect to login
     if is_authenticated():
-        return redirect("/login?red_url={}".format(request.path),code=302)
+        return redirect("/login?red_url={}".format(request.path), code=302)
 
     if review != None:
         rate = review["rate"]

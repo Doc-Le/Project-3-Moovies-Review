@@ -9,8 +9,9 @@ from .models import (
 tmdb.API_KEY = MOVIE_API_KEY
 tmdb.REQUESTS_TIMEOUT = (2, 5)
 
+
 def search_movies(query):
-    """ search movie in api """ 
+    """ search movie in api """
     search = tmdb.Search()
     search.movie(query=query)
     results = []
@@ -19,11 +20,13 @@ def search_movies(query):
         results.append(movie_details)
     return results
 
+
 def get_movie(id):
     """ search movie in api """
     movie = tmdb.Movies(id)
     movie_details = movie.info()
     return parse_movie(movie_details)
+
 
 def parse_movie(movie):
     movie_id = movie["id"]

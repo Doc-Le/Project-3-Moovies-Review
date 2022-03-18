@@ -1,93 +1,123 @@
-{% extends 'base.html' %}
-
-{% block main %}
-  <div class="d-flex justify-content-center">
-    <div class="card">
-        <div class="card-header">
-         <h1>Sign-Up</h1>
-        </div>
-        <div class="card-body">
-          <!-- added click on btn -->
-          {% if context.show_message == True %}
-          <h3>{{ context.message }}</h3>
-          <div class="col-12">
-              Click on to <a href="/login{{ context.url_redirect.params }}" class="btn btn-secondary">Login</a>
-          </div>
-          {% else %}
-          <form id="signup" action="/signup{{ context.url_redirect.params }}" method="POST" class="row row-cols-lg-auto g-3 align-items-center" novalidate>
-            <div class="col-12">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control {{ 'is-invalid' if context.username_exist == True }}" id="username" name="username" placeholder="Username" required>
-              <div class="invalid-feedback">
-                <!-- added context message -->
-                {% if context.username_exist == False %}
-                  Please provide a valid username.
-                {% else %}
-                  {{ context.message }} 
-                {% endif %}
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-              <div class="invalid-feedback">
-                Please provide a valid password.
-              </div>              
-            </div>
-            <div class="col-12">
-              <label for="password_check" class="form-label">Repeat Password</label>
-              <input type="password" class="form-control" id="password_check" name="password_check"  placeholder="Repeat Password" oninput="password_validation(this)" required>
-              <div class="invalid-feedback" id="password_check_validator">
-                Please provide a valid repeated password.
-              </div>
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-secondary">Sign-up</button>      
-            </div>
-          </form>
-          {% endif %}
-        </div>
+{% extends 'base.html' %} {% block main %}
+<div class="d-flex justify-content-center">
+  <div class="card">
+    <div class="card-header">
+      <h1>Sign-Up</h1>
+    </div>
+    <div class="card-body">
+      <!-- added click on btn -->
+      {% if context.show_message == True %}
+      <h3>{{ context.message }}</h3>
+      <div class="col-12">
+        Click on to
+        <a
+          href="/login{{ context.url_redirect.params }}"
+          class="btn btn-secondary"
+          >Login</a
+        >
       </div>
+      {% else %}
+      <form
+        id="signup"
+        action="/signup{{ context.url_redirect.params }}"
+        method="POST"
+        class="row row-cols-lg-auto g-3 align-items-center"
+        novalidate
+      >
+        <div class="col-12">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control {{ 'is-invalid' if context.username_exist == True }}"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+          />
+          <div class="invalid-feedback">
+            <!-- added context message -->
+            {% if context.username_exist == False %} Please provide a valid
+            username. {% else %} {{ context.message }} {% endif %}
+          </div>
+        </div>
+        <div class="col-12">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <div class="invalid-feedback">Please provide a valid password.</div>
+        </div>
+        <div class="col-12">
+          <label for="password_check" class="form-label">Repeat Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password_check"
+            name="password_check"
+            placeholder="Repeat Password"
+            oninput="password_validation(this)"
+            required
+          />
+          <div class="invalid-feedback" id="password_check_validator">
+            Please provide a valid repeated password.
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-secondary">Sign-up</button>
+        </div>
+      </form>
+      {% endif %}
+    </div>
   </div>
-{% endblock %}
-
-{% block postloadjs_extra %}
-  <script type="text/javascript">
-    // check password validation if empty or not equal to confirm
-    function password_validation(input) {
-      const password = document.querySelector('#password')
-      const password_check_validator = document.querySelector('#password_check_validator')
-      if (!input.value) {
-        input.classList.add('is-valid');
-        password_check_validator.innerHTML = 'Please provide a valid repeated password.'
-        input.setCustomValidity('Please provide a valid repeated password.');
-      } else if (password.value !== input.value) {
-        input.classList.add('is-valid');
-        password_check_validator.innerHTML = 'Password must be equal.'
-        input.setCustomValidity('Password must be equal.');
-      } else {
-        input.setCustomValidity('');
-      }        
+</div>
+{% endblock %} {% block postloadjs_extra %}
+<script type="text/javascript">
+  // check password validation if empty or not equal to confirm
+  function password_validation(input) {
+    const password = document.querySelector("#password");
+    const password_check_validator = document.querySelector(
+      "#password_check_validator"
+    );
+    if (!input.value) {
+      input.classList.add("is-valid");
+      password_check_validator.innerHTML =
+        "Please provide a valid repeated password.";
+      input.setCustomValidity("Please provide a valid repeated password.");
+    } else if (password.value !== input.value) {
+      input.classList.add("is-valid");
+      password_check_validator.innerHTML = "Password must be equal.";
+      input.setCustomValidity("Password must be equal.");
+    } else {
+      input.setCustomValidity("");
     }
-    // example from: https://getbootstrap.com/docs/5.0/forms/validation/#custom-styles
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-      'use strict'
+  }
+  // example from: https://getbootstrap.com/docs/5.0/forms/validation/#custom-styles
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    "use strict";
 
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      const forms = document.querySelectorAll('#signup')
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll("#signup");
 
-      // Loop over them and prevent submission
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-            }            
-            form.classList.add('was-validated') 
-          }, false)
-        })
-    })()
-  </script>
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
 {% endblock %}

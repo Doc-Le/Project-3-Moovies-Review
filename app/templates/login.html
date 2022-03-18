@@ -12,26 +12,42 @@
       {% endif %}
       <!-- show form username/password block -->
       {% if context.show_form == True %}
-      <form id="login" action="/login{{ context.url_redirect.params }}" method="POST" class="row row-cols-lg-auto g-3 align-items-center" novalidate>
+      <form
+        id="login"
+        action="/login{{ context.url_redirect.params }}"
+        method="POST"
+        class="row row-cols-lg-auto g-3 align-items-center"
+        novalidate
+      >
         <div class="col-12">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
-          <div class="invalid-feedback">
-            Please provide a valid username.
-          </div>  
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+          />
+          <div class="invalid-feedback">Please provide a valid username.</div>
         </div>
         <div class="col-12">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-          <div class="invalid-feedback">
-            Please provide a valid password.
-          </div>  
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <div class="invalid-feedback">Please provide a valid password.</div>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-secondary">Login</button>      
+          <button type="submit" class="btn btn-secondary">Login</button>
         </div>
       </form>
-      {% endif %}    
+      {% endif %}
     </div>
   </div>
 </div>
@@ -43,34 +59,38 @@
 <div class="d-flex justify-content-center">
   <div class="card">
     <div class="card-body">
-      <a href="/signup{{ context.url_redirect.params }}" class="btn btn-secondary">Sign-up</a>
+      <a
+        href="/signup{{ context.url_redirect.params }}"
+        class="btn btn-secondary"
+        >Sign-up</a
+      >
     </div>
   </div>
 </div>
-{% endif %}
-{% endblock %}
+{% endif %} {% endblock %} {% block postloadjs_extra %}
+<script type="text/javascript">
+  // example from: https://getbootstrap.com/docs/5.0/forms/validation/#custom-styles
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    "use strict";
 
-{% block postloadjs_extra %}
-  <script type="text/javascript">
-    // example from: https://getbootstrap.com/docs/5.0/forms/validation/#custom-styles
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-      'use strict'
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll("#login");
 
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      const forms = document.querySelectorAll('#login')
-
-      // Loop over them and prevent submission
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-            }            
-            form.classList.add('was-validated') 
-          }, false)
-        })
-    })()
-  </script>
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
 {% endblock %}

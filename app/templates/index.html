@@ -1,13 +1,29 @@
 {% extends 'base.html' %}
 <!-- Add index block main with logo header/search -->
 {% block main %}
-    <div class="search-form-center p-3">
-        <img src="{{url_for('static', filename = 'images/logo-header.png')}}" alt="Moovie Review">
-        <form id="search" action="/search" method="POST" class="w-100">
-            <div class="input-group mb-3">
-                <input id="query" name="query" type="text" class="form-control" placeholder="Search for Movies" aria-label="Recipient's username" aria-describedby="search_submit" />
-                <input id="search_submit" class="btn btn-outline-secondary" type="submit" value="Search">
-            </div>
-        </form>
+<div class="search-form-center p-3">
+  <img
+    src="{{url_for('static', filename = 'images/logo-header.png')}}"
+    alt="Moovie Review"
+  />
+  <form id="search" action="/search" method="POST" class="w-100">
+    <div class="input-group mb-3">
+      <input
+        id="query"
+        name="query"
+        type="text"
+        class="form-control"
+        placeholder="Search for Movies"
+        aria-label="Recipient's username"
+        aria-describedby="search_submit"
+      />
+      <input
+        id="search_submit"
+        class="btn btn-outline-secondary"
+        type="submit"
+        value="Search"
+      />
     </div>
+  </form>
+</div>
 {% endblock %}
