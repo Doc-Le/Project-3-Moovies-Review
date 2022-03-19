@@ -1,5 +1,3 @@
-
-
 from pymongo import cursor
 from .utils import process_cursor
 from app import (app, mongo)
