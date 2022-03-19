@@ -78,7 +78,7 @@ def profile(username):
 
     # check if user is logged in
     # set user session
-    return render_template("profile.html", context=context)
+    return render_template("profile.html", context = context)
 
 
 @app.route("/signup", methods=["GET", "POST"])
