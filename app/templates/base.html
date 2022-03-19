@@ -1,126 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="h-100">
-  <head>
+
+<head>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    />
-    <title>
-      Moovies Review {{ ' > ' + context.title if context.title != "" }}
-    </title>
-  </head>
-  <!-- Main body html -->
-  <body class="d-flex flex-column h-100">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Moovies Review {{ ' > ' +  context.title if context.title != "" }}</title>
+</head>
+<!-- Main body html -->
+<body class="d-flex flex-column h-100">
     <header class="py-3 mb-3 border-bottom">
-      <div
-        class="container-fluid d-grid gap-3 align-items-center"
-        style="grid-template-columns: 1fr 2fr"
-      >
-        <a
-          href="/"
-          class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none"
-        >
-          <img
-            src="{{url_for('static', filename = 'images/logo-header.png')}}"
-            alt="Moovie Review"
-            class="{{ 'invisible' if context.show_header_search == False }}"
-          />
-        </a>
-        <div class="d-flex align-items-center">
-          <form
-            class="w-100 me-3 {{ 'invisible' if context.show_header_search == False }}"
-            id="search_header"
-            action="/search"
-            method="POST"
-          >
-            <input
-              id="query_header"
-              name="query_header"
-              type="text"
-              class="form-control"
-              placeholder="Search for Movies"
-            />
-          </form>
-          <div class="flex-shrink-0 dropdown">
-            <a
-              href="#"
-              class="d-block link-dark text-decoration-none dropdown-toggle"
-              id="login"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {% if context.user.authenticated == False %}
-              <img
-                src="{{url_for('static', filename = 'images/sign-in.png')}}"
-                alt="Sign-In"
-                width="32"
-                height="32"
-                class="rounded-circle"
-              />
-              {% else %}
-              <img
-                src="{{url_for('static', filename = 'images/signed-in.png')}}"
-                alt="Signed-In"
-                width="32"
-                height="32"
-                class="rounded-circle"
-              />
-              {% endif %}
-              <span>{{ context.user.username }}</span>
+        <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+            <a href="/" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none">
+               <img src="{{url_for('static', filename = 'images/logo-header.png')}}" alt="Moovie Review" class="{{ 'invisible' if context.show_header_search == False }}">
             </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="login">
-              {% if context.user.authenticated == False %}
-              <li><a class="dropdown-item" href="/login">Login</a></li>
-              <li><a class="dropdown-item" href="/signup">Sign-up</a></li>
-              {% else %}
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="/profile/{{ context.user.username }}"
-                  >Profile</a
-                >
-              </li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="/logout">Log out</a></li>
-              {% endif %}
-            </ul>
-          </div>
+            <div class="d-flex align-items-center">
+                <form class="w-100 me-3 {{ 'invisible' if context.show_header_search == False }}" id="search_header" action="/search" method="POST">
+                    <input id="query_header" name="query_header" type="text" class="form-control" placeholder="Search for Movies" />
+                </form>
+                <div class="flex-shrink-0 dropdown">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="login" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if context.user.authenticated == False %}
+                    <img src="{{url_for('static', filename = 'images/sign-in.png')}}" alt="Sign-In" width="32" height="32" class="rounded-circle">
+                    {% else %}
+                    <img src="{{url_for('static', filename = 'images/signed-in.png')}}" alt="Signed-In" width="32" height="32" class="rounded-circle">
+                    {% endif %}
+                    <span>{{ context.user.username }}</span>
+                </a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="login">
+                    {% if context.user.authenticated == False %}
+                    <li><a class="dropdown-item" href="/login">Login</a></li>
+                    <li><a class="dropdown-item" href="/signup">Sign-up</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item" href="/profile/{{ context.user.username }}">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                    {% endif %}
+                </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
+    </header>        
     <main class="container">
-      <div class="row">
-        <div class="col-sm-12">{% block main %} {% endblock %}</div>
-      </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {% block main %}
+                {% endblock %}
+            </div>
+        </div>
     </main>
     <!-- footer Power by link -->
-    <footer class="footer mt-auto py-3 bg-light">
-      <div class="container">
-        <div class="d-flex justify-content-center">
-          <span class="text-muted"
-            >Powered by
-            <a href="https://www.themoviedb.org" target="_blank"
-              >https://www.themoviedb.org</a
-            >.</span
-          >
+        <footer class="footer mt-auto text-center text-white">
+        <!-- Grid container -->
+        <div class="container pt-4">
+          <!-- Section: Social media -->
+          <section class="mb-1">
+            <ul class="socialIcons">
+              <li class="facebook"><a href="facebook.com"><i class="fa fa-fw fa-facebook"></i>Facebook</a></li>
+              <li class="twitter"><a href=""><i class="fa fa-fw fa-twitter"></i>Twitter</a></li>
+              <li class="instagram"><a href=""><i class="fa fa-fw fa-instagram"></i>Instagram</a></li>
+              <li class="pinterest"><a href=""><i class="fa fa-fw fa-pinterest-p"></i>Pinterest</a></li>
+              <li class="github"><a href=""><i class="fa fa-fw fa-github"></i>Github</a></li>
+            </ul>
+          </section>
+          <!-- Section: Social media -->
         </div>
-      </div>
-    </footer>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2022 Copyright:
+          <a class="text-dark" href="https://www.themoviedb.org">www.themoviedb.org</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+       </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -135,5 +96,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
     {% block postloadjs_extra %} {% endblock %}
-  </body>
+</body>
 </html>
