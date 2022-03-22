@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Moovies Review {{ ' > ' +  context.title if context.title != "" }}</title>
 </head>
@@ -22,7 +22,7 @@
                <img src="{{url_for('static', filename = 'images/logo-header.png')}}" alt="Moovie Review" class="{{ 'invisible' if context.show_header_search == False }}">
             </a>
             <div class="d-flex align-items-center">
-                <form class="w-100 me-3 {{ 'invisible' if context.show_header_search == False }}" id="search_header" action="/search" method="POST">
+                <form class="w-100 me-5 {{ 'invisible' if context.show_header_search == False }}" id="search_header" action="/search" method="POST">
                     <input id="query_header" name="query_header" type="text" class="form-control" placeholder="Search for Movies" />
                 </form>
                 <div class="flex-shrink-0 dropdown">
@@ -61,23 +61,27 @@
         <!-- Grid container -->
         <div class="container pt-4">
           <!-- Section: Social media -->
-          <section class="mb-1">
-            <ul class="socialIcons">
-              <li class="facebook"><a href="facebook.com"><i class="fa fa-fw fa-facebook"></i>Facebook</a></li>
-              <li class="twitter"><a href=""><i class="fa fa-fw fa-twitter"></i>Twitter</a></li>
-              <li class="instagram"><a href=""><i class="fa fa-fw fa-instagram"></i>Instagram</a></li>
-              <li class="pinterest"><a href=""><i class="fa fa-fw fa-pinterest-p"></i>Pinterest</a></li>
-              <li class="github"><a href=""><i class="fa fa-fw fa-github"></i>Github</a></li>
+          <br/>
+            <div align="center" class="socialbtns">
+            <ul>
+            <li><a href="facebook.com" class="fa fa-lg fa-facebook"></a></li>
+            <li><a href="twitter.com" class="fa fa-lg fa-twitter"></a></li>
+            <li><a href="google.com" class="fa fa-lg fa-google"></a></li>
+            <li><a href="https://github.com/Doc-Le" class="fa fa-lg fa-github"></a></li>
+            <li><a href="pinterest.com" class="fa fa-lg fa-pinterest"></a></li>
+            <li><a href="linkdin.com" class="fa fa-lg fa-linkedin"></a></li>
+            <li><a href="instagram.com" class="fa fa-lg fa-instagram"></a></li>
+            <li><a href="youtube.com" class="fa fa-lg fa-youtube"></a></li>
             </ul>
-          </section>
+            </div>
           <!-- Section: Social media -->
         </div>
         <!-- Grid container -->
       
         <!-- Copyright -->
-        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2022 Copyright:
-          <a class="text-dark" href="https://www.themoviedb.org">www.themoviedb.org</a>
+        <div class="text-center text-dark p-2" style="background-color: light-grey;">
+          
+          <a class="text-dark" href=""><h6></h6></a>
         </div>
         <!-- Copyright -->
       </footer>
