@@ -53,19 +53,6 @@
 </div>
 <!-- show signup  block -->
 {% if context.show_signup == True %}
-<div class="d-flex justify-content-center">
-  <label>or</label>
-</div>
-<div class="d-flex justify-content-center">
-  <div class="card">
-    <div class="card-body">
-      <a
-        href="/signup{{ context.url_redirect.params }}"
-        class="btn btn-secondary"
-        >Sign-up</a
-      >
-    </div>
-  </div>
 </div>
 {% endif %} {% endblock %} {% block postloadjs_extra %}
 <script type="text/javascript">

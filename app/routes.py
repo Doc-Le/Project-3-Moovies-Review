@@ -94,7 +94,7 @@ def signup():
 
         if get_user(username) != None:
             # Validate username already exists
-            message = "Username {} already exist. Please, choose another username".format(username)
+            message = "Username {} already exist. Please, choose different one".format(username)
             username_exist = True
             show_message = False
         else:
@@ -138,7 +138,7 @@ def login():
             if url_redirect.to != None:
                 return redirect(url_redirect.to, code=302)
             else:
-                message = "Success logged in with username {}!".format(username)
+                message = "You are logged in {}!".format(username)
                 show_message = True
                 show_form = False
 
