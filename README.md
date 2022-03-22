@@ -2,7 +2,7 @@
 Milestone 3 - Code institute 
 
 
-![Alt](/images/logo-header.png "Moovies review")
+![Alt]("Moovies review")
 
 
 
