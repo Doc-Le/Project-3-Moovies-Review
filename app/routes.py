@@ -141,7 +141,7 @@ def login():
                 message = "You are logged in {}!".format(username)
                 show_message = True
                 show_form = False
-
+                
     context = {
         "title": "Login",
         "user": get_user_session(),
