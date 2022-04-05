@@ -1,4 +1,3 @@
-
 import json
 
 """
@@ -77,4 +76,4 @@ class UrlRedirect:
             self.params = ""
 
     def __str__(self):
-        return self.to
+        return self.to      
