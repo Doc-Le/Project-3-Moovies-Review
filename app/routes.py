@@ -7,10 +7,14 @@ from app import (app, mongo)
 from app import app
 from bson.objectid import ObjectId
 from flask import request, render_template, redirect
-from .db import (get_movie_user_review, get_user, insert_review, insert_user, authenticate_user, update_review)
+from .db import (
+    get_movie_user_review, get_user, insert_review,
+    insert_user, authenticate_user, update_review)
 from .models import (User, Movie, Review, UrlRedirect)
 from .tmdb import (search_movies, get_movie)
-from .utils import (set_user_session, get_user_session, clear_user_session, is_authenticated)
+from .utils import (
+    set_user_session, get_user_session,
+    clear_user_session, is_authenticated)
 
 
 @app.route("/", methods=["GET"])
@@ -78,7 +82,7 @@ def profile(username):
 
     # check if user is logged in
     # set user session
-    return render_template("profile.html", context = context)
+    return render_template("profile.html", context=context)
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -141,7 +145,7 @@ def login():
                 message = "You are logged in {}!".format(username)
                 show_message = True
                 show_form = False
-                
+
     context = {
         "title": "Login",
         "user": get_user_session(),
