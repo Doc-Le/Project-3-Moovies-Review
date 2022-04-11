@@ -4,7 +4,8 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale = 0.86, maximum-scale=3.0, minimum-scale=0.86">
+ 
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,7 +22,7 @@
             <a href="/" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none">
                <img src="{{url_for('static', filename = 'images/logo-header.png')}}" alt="Moovie Review" class="{{ 'invisible' if context.show_header_search == False }}">
             </a>
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-right">
                 <form class="w-100 me-5 {{ 'invisible' if context.show_header_search == False }}" id="search_header" action="/search" method="POST">
                     <input id="query_header" name="query_header" type="text" class="form-control" placeholder="Search for Movies" />
                 </form>
@@ -62,7 +63,7 @@
         <div class="container pt-4">
           <!-- Section: Social media -->
           <br/>
-            <div align="center" class="socialbtns">
+            <div class="socialbtns" style="center">
             <ul>
                 <li><a href="https://facebook.com" class="fa fa-lg fa-facebook"></a></li>
                 <li><a href="https://twitter.com" class="fa fa-lg fa-twitter"></a></li>
@@ -79,13 +80,13 @@
         <!-- Grid container -->
       
         <!-- Copyright -->
-        <div class="text-center text-dark p-2" style="background-color: light-grey;">
+        <div class="text-center text-dark p-2" style="background-color: .bg-light;">
           
-          <a class="text-dark" href="https://www.themoviedb.org/"><h6>Powered by TMDB</h6></a>
+          <a class="text-dark" href="https://www.themoviedb.org/"><h9>Powered by TMDB</h9></a>
         </div>
         <!-- Copyright -->
       </footer>
-       </div>
+     
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
