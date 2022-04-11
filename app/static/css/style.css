@@ -1,3 +1,10 @@
+html, body {
+    overflow-x: hidden;
+  }
+ body {
+    width:100%;
+  }
+
 .search-form-center {
     width: 100%;
     max-width: 600px;
@@ -7,7 +14,7 @@
  }
 
 .search-form-center img {
-    margin: 55px auto;
+    margin: 40px auto;
 }
 
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
