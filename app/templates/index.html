@@ -2,8 +2,8 @@
 <!-- Add index block main with logo header/search -->
 {% block main %}
 <div class="search-form-center p-3">
-  <img
-    src="{{url_for('static', filename = 'images/logo-header.png')}}"
+  <img 
+    style="margin-left:40px" src="{{url_for('static', filename = 'images/logo-header.png')}}"
     alt="Moovie Review"
   />
   <form id="search" action="/search" method="POST" class="w-100">
