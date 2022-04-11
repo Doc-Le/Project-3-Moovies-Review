@@ -17,7 +17,7 @@ html, body {
     margin: 40px auto;
 }
 
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'); 
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"); 
 
 a, a:hover {
   color: #000;
