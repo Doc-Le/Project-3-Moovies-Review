@@ -38,7 +38,7 @@ def search():
     elif request.form.get("query_header", None):
         query = request.form["query_header"]
 
-    if query != None:
+    if query is not None:
         movies = search_movies(query)
 
     context = {
@@ -96,7 +96,7 @@ def signup():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        if get_user(username) != None:
+        if get_user(username) is not None:
             # Validate username already exists
             message = "Username {} already exist. Please, choose different one".format(username)
             username_exist = True
@@ -126,20 +126,20 @@ def login():
     show_message = False
     show_form = True
     url_redirect = UrlRedirect(request)
-    show_signup = bool(url_redirect != None)
+    show_signup = bool(url_redirect is not None)
 
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         authenticated = authenticate_user(username=username, password=password)
 
-        if authenticated != True:
+        if authenticated is not True:
             message = "Username or Password incorrect. Please try again!"
             show_message = True
             show_form = True
         else:
             set_user_session(username=username, authenticated=authenticated)
-            if url_redirect.to != None:
+            if url_redirect.to is not None:
                 return redirect(url_redirect.to, code=302)
             else:
                 message = "You are logged in {}!".format(username)
@@ -183,12 +183,12 @@ def review(id):
     if is_authenticated():
         return redirect("/login?red_url={}".format(request.path), code=302)
 
-    if review != None:
+    if review is not None:
         rate = review["rate"]
 
     if request.method == "POST":
         rate = float(request.form["options"])
-        if review != None:
+        if review is not None:
             update_review(review["id"], rate)
             message = "Thanks for updating your previous review this movie!"
         else:
