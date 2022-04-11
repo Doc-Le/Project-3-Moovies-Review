@@ -15,7 +15,7 @@ I was inspired by many apps that I have installed on my phone. But one, in parti
 Upon exchanging info with family and friends, I came up with a simple and straightforward idea, to develop something similar to a google search bar, but only to search for movies and reviews.  
 <b>
 
-![Image showing the website displayed on different screen sizes](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/app/static/tests/responsive%20.png)
+![Image showing the website displayed on different screen sizes](![responsive ](https://user-images.githubusercontent.com/76841050/162733845-e7818436-9db1-4568-90a5-1763c83a6588.png)
 
 #
 
