@@ -15,6 +15,8 @@ I was inspired by many apps that I have installed on my phone. But one, in parti
 Upon exchanging info with family and friends, I came up with a simple and straightforward idea, to develop something similar to a google search bar, but only to search for movies and reviews.  
 <b>
 
+![Image showing the website displayed on different screen sizes](static\tests\responsive.png)
+
 #
 
 ## User Experience (UX)
