@@ -1,4 +1,4 @@
-1. Profile page is broken
+1. Profile page is broken 
 2. Horizontal scrolling is present on mobile devices
 3. Testing steps are incomprehensible with respect to user stories, leading to open bugs in the application
 4. Fails to pass through the official validator, and has compelling code issues
