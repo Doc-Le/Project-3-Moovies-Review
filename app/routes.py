@@ -83,7 +83,7 @@ def profile(username):
     # check if user is logged in
     # set user session
     return render_template("profile.html", context=context)
-
+    
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -101,13 +101,15 @@ def signup():
             message = "Username {} already exist. Please, choose different one".format(username)
             username_exist = True
             show_message = False
+          
         else:
             # return message to make sure both passwords are equal
             user = {"username": username, "password": password}
             insert_user(user)
             message = "Success registered user {}!".format(username)
             show_message = True
-
+            
+        
     context = {
         "title": "Sign-up",
         "user": get_user_session(),
@@ -132,7 +134,7 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
         authenticated = authenticate_user(username=username, password=password)
-
+       
         if authenticated is not True:
             message = "Username or Password incorrect. Please try again!"
             show_message = True
@@ -145,6 +147,8 @@ def login():
                 message = "You are logged in {}!".format(username)
                 show_message = True
                 show_form = False
+                #return redirect("/profile/url={username}")
+        
 
     context = {
         "title": "Login",
@@ -156,6 +160,7 @@ def login():
         "show_form": show_form,
         "message": message
     }
+           
     return render_template("login.html", context=context)
 
 
