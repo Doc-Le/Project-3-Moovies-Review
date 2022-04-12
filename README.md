@@ -101,16 +101,14 @@ Upon exchanging info with family and friends, I came up with a simple and straig
 
 -   Logged in users can add reviews.
 
--   Logged in user can delete reviews on home page to their profile.
+-   Logged in user can renew reviews in home page to their profile.
 
 -   Admin users can add, edit and delete any reviews.
 
 -   Before anything is deleted a confirmation is required preventing accidental deletion.
+#
 
--   Cancel buttons on edit pages in case user changed their mind or got there accidentally.
-
-
-   #### Features to implement in the future
+   ### Features to implement in the future
 
 -  Movies suggestions based on the users favourite genre, which will crosscheck which movie are in the library of that genre, which movie they have on their profile and display 1 or 2 movies at random so they also aren't seeing the same suggestions everytime they log in.
 - Users can add a review to movies they didn't add.
@@ -284,7 +282,7 @@ $ git clone  https://github.com/Doc-Le/Project-3-Moovies-Review.git
         
     - Click enable automatic deployment, below that in manual deploy section, you can pick and deploy a branch to ensure everything is et up correctly. 
 
-    - Go to the [the movie database (TMDB) 
+    - Go to the [the movie database [TMDB](https://www.themoviedb.org/documentation/api/sessions)
 #
 
 ## Credits
