@@ -15,7 +15,7 @@ I was inspired by many apps that I have installed on my phone. But one, in parti
 Upon exchanging info with family and friends, I came up with a simple and straightforward idea, to develop something similar to a google search bar, but only to search for movies and reviews.  
 <b>
 
-![Image showing the website displayed on different screen sizes](![responsive ](https://user-images.githubusercontent.com/76841050/162733845-e7818436-9db1-4568-90a5-1763c83a6588.png)
+![responsive ](https://user-images.githubusercontent.com/76841050/162733845-e7818436-9db1-4568-90a5-1763c83a6588.png)
 
 #
 
@@ -60,8 +60,7 @@ Upon exchanging info with family and friends, I came up with a simple and straig
         3. As a frequent visitor, I want to be able to update my profile.
         4. As a frequent visitor, I want to be able to change my account information.
         
-       
-
+    
    - #### Admin goals
       
         1. As admin, I want to be able to add, delete or edit a movie review.
@@ -69,7 +68,7 @@ Upon exchanging info with family and friends, I came up with a simple and straig
         3. As admin, I want to be able to delete a user.
         4. As admin, I want to be able to make another user an admin.
         5. As admin, I want to be able to reset a users password if they're having trouble logging in.
-
+#
    ### Scope
 
    Within project conception, a list of features were compiled, these were the scored 
@@ -156,7 +155,7 @@ Upon exchanging info with family and friends, I came up with a simple and straig
          
       Used [Google Fonts](https://fonts.google.com/) to import the fonts used for this site.
      
-
+#
 ## Technologies 
 
 ### Languages Used
@@ -211,7 +210,7 @@ Upon exchanging info with family and friends, I came up with a simple and straig
 20. [convertingcolors.com](https://convertingcolors.com/color-bucket.html)
     - For making my colour palette picture
 
-
+#
 
 ## Deployment
 
@@ -241,7 +240,7 @@ $ git clone  https://github.com/Doc-Le/Project-3-Moovies-Review.git
 ```
 * **Step 2** : The repository, if downloaded as a .zip file will need to be extracted to your preferred location and opened
 
-*
+
    *  Clone using command line 
         +  Next to the green Gitpod button is a button that says code, select this. There is a few options as to how you 
         would like to clone, if you choose https, SSH or Github CLI, select the clipboard icon to copy the URL.
@@ -286,6 +285,7 @@ $ git clone  https://github.com/Doc-Le/Project-3-Moovies-Review.git
     - Click enable automatic deployment, below that in manual deploy section, you can pick and deploy a branch to ensure everything is et up correctly. 
 
     - Go to the [the movie database (TMDB) 
+#
 
 ## Credits
 
@@ -298,36 +298,22 @@ $ git clone  https://github.com/Doc-Le/Project-3-Moovies-Review.git
 -   [Bootstrap5](maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css):Social media buttons and art.
 -   [MongoDb documentation](https://docs.mongodb.com/manual/): Used for push, pull, and addToSet.
 -   [Grepper](https://www.codegrepper.com/code-examples/python/how+to+remove+spaces+from+input+in+python): Used to check that book title was not just spaces as user can't edit book title once added, only admin can. 
-
+#
 ## Testing
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
-
-W3C Markup Validator - Results [link](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmoovies-review-app.herokuapp.com%2F)
-Testing User Stories from User Experience Section
-
-## Further Testing
-
-* The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge and Safari browsers.
-* The website was viewed on a variety of devices such as Desktop, Laptop, iPhone7, iPhone 8 & iPhone X.
-* A large amount of testing was done to ensure that all pages were linking correctly.
-* Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
-
-
-
-
+Testing and results can be found [here](TESTING.md)
+#
 ## Content
 
 All content was written by the developer
 
-
+#
 ## Media
 
 * Logo custom made by the developer with Adobe Illustrator
 * All images found [Image: API] (https://www.themoviedb.org/documentation/api/sessions)
+#
 
-<br></br>
-<br></br>
 ## Author
 
 👤 **Leandro De Araujo**
