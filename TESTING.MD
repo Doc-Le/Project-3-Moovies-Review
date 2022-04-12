@@ -77,9 +77,12 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
          ![app login](app\static\tests\login.png)
          * A simple way to  become a member by signing up.<br>
          ![app signup](app\static\tests\signup.png)
-         * already logged in, you can logout anytime.<br>
+         * Already logged in, you can logout anytime.<br>
          ![app logged in](app\static\tests\loggedinmsg.png)
-         ![app profile](app\static\tests\Profilemsg.png)
+         * After logged in click on Profile.<br>
+         ![app dropdown menu](app\static\tests\Profilemsg.png)
+         * Profile.<br>
+         ![app profile](app\static\tests\profile.png)
          
 
       6. As a first time visitor, I want to easily search the movies.<br>
@@ -87,8 +90,10 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
          
          * The search bar is at the top or center of the home page, the user can use it to search for movie titles, actors, and actresses.<br>
          ![app search bar](app\static\tests\searchmovie.png)
-         * After clicking on the review button, user will be able to leave the review.
-         ![app search bar](app\static\tests\review.png)
+         * After clicking on the review button, user will be able to leave the review.<br>
+         ![app review](app\static\tests\review.png)
+         * No delete function needed, update your review.<br>
+         ![app updating review](app\static\tests\updatingreview.png)
 
      
 ## Further Testing
