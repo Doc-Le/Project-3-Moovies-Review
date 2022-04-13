@@ -9,5 +9,5 @@ if __name__ == '__main__':
     app.run(
         host=IP,
         port=PORT,
-        debug=True
+        debug=False
     )
