@@ -301,7 +301,7 @@ $ git clone  https://github.com/Doc-Le/Project-3-Moovies-Review.git
 #
 ## Testing
 
-Testing and results can be found [here](TESTING.md)
+Testing and results can be found [here](TESTING.MD)
 #
 ## Content
 
