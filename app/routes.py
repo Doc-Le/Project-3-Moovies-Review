@@ -38,7 +38,7 @@ def search():
     elif request.form.get("query_header", None):
         query = request.form["query_header"]
 
-    if query != None:
+    if query is not None:
         movies = search_movies(query)
 
     context = {
@@ -83,7 +83,7 @@ def profile(username):
     # check if user is logged in
     # set user session
     return render_template("profile.html", context=context)
-
+    
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -96,18 +96,20 @@ def signup():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        if get_user(username) != None:
+        if get_user(username) is not None:
             # Validate username already exists
             message = "Username {} already exist. Please, choose different one".format(username)
             username_exist = True
             show_message = False
+          
         else:
             # return message to make sure both passwords are equal
             user = {"username": username, "password": password}
             insert_user(user)
             message = "Success registered user {}!".format(username)
             show_message = True
-
+            
+        
     context = {
         "title": "Sign-up",
         "user": get_user_session(),
@@ -126,25 +128,27 @@ def login():
     show_message = False
     show_form = True
     url_redirect = UrlRedirect(request)
-    show_signup = bool(url_redirect != None)
+    show_signup = bool(url_redirect is not None)
 
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         authenticated = authenticate_user(username=username, password=password)
-
-        if authenticated != True:
+       
+        if authenticated is not True:
             message = "Username or Password incorrect. Please try again!"
             show_message = True
             show_form = True
         else:
             set_user_session(username=username, authenticated=authenticated)
-            if url_redirect.to != None:
+            if url_redirect.to is not None:
                 return redirect(url_redirect.to, code=302)
             else:
                 message = "You are logged in {}!".format(username)
                 show_message = True
                 show_form = False
+                #return redirect("/profile/url={username}")
+        
 
     context = {
         "title": "Login",
@@ -156,6 +160,7 @@ def login():
         "show_form": show_form,
         "message": message
     }
+           
     return render_template("login.html", context=context)
 
 
@@ -183,12 +188,12 @@ def review(id):
     if is_authenticated():
         return redirect("/login?red_url={}".format(request.path), code=302)
 
-    if review != None:
+    if review is not None:
         rate = review["rate"]
 
     if request.method == "POST":
         rate = float(request.form["options"])
-        if review != None:
+        if review is not None:
             update_review(review["id"], rate)
             message = "Thanks for updating your previous review this movie!"
         else:

@@ -1,16 +1,4 @@
-.search-form-center {
-    width: 100%;
-    max-width: 600px;
-    padding: 15px;
-    margin: auto;
-    text-align: center;
- }
-
-.search-form-center img {
-    margin: 55px auto;
-}
-
-@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'); 
 
 a, a:hover {
   color: #000;
@@ -79,4 +67,23 @@ a, a:hover {
   -moz-transition: all ease-in 0.5s;
   -webkit-transition: all ease-in 0.5s;
   -o-transition: all ease-in 0.5s;
+}
+
+html, body {
+    overflow-x: hidden;
+  }
+ body {
+    width:100%;
+  }
+
+.search-form-center {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+ }
+
+.search-form-center img {
+    margin: 40px auto;
 }
