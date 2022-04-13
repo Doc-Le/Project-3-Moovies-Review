@@ -15,7 +15,7 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
 -   ## [W3C Markup Validator](https://validator.w3.org/) 
 
-      ![htmlvalidator](https://user-images.githubusercontent.com/76841050/163257408-b9813057-2468-40cf-864b-5c216872c7b3.png))
+      ![htmlvalidator](https://user-images.githubusercontent.com/76841050/163257408-b9813057-2468-40cf-864b-5c216872c7b3.png)
 
 -   ## [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) 
     
@@ -45,7 +45,7 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
      
      + Logout.html(see report [here](app\static\tests\LHlogout.png)
 
-      ![LHlogout](https://user-images.githubusercontent.com/76841050/163257624-edc81ac2-b956-4a9c-ad18-46cb389382f3.png)
+       ![LHlogout](https://user-images.githubusercontent.com/76841050/163257624-edc81ac2-b956-4a9c-ad18-46cb389382f3.png)
 
       
     
