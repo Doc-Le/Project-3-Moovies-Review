@@ -284,7 +284,7 @@ $ git clone  https://github.com/Doc-Le/Project-3-Moovies-Review.git
         
     - Click enable automatic deployment, below that in manual deploy section, you can pick and deploy a branch to ensure everything is et up correctly. 
 
-    - Go to the [the movie database [TMDB](https://www.themoviedb.org/documentation/api/sessions)
+    - Go to the [the movie database] [TMDB](https://www.themoviedb.org/documentation/api/sessions)
 #
 
 ## Credits
@@ -297,7 +297,7 @@ $ git clone  https://github.com/Doc-Le/Project-3-Moovies-Review.git
 -   [API(TMDB)](https://www.themoviedb.org/documentation/api/sessions): TMBD database and core of this project.
 -   [Bootstrap5](maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css):Social media buttons and art.
 -   [MongoDb documentation](https://docs.mongodb.com/manual/): Used for push, pull, and addToSet.
--   [Grepper](https://www.codegrepper.com/code-examples/python/how+to+remove+spaces+from+input+in+python): Used to check that book title was not just spaces as user can't edit book title once added, only admin can. 
+
 #
 ## Testing
 
@@ -305,7 +305,7 @@ Testing and results can be found [here](TESTING.md)
 #
 ## Content
 
-All content was written by the developer
+Content was written by the developer
 
 #
 ## Media
