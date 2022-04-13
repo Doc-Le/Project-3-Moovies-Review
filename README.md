@@ -126,8 +126,8 @@ Upon exchanging info with family and friends, I came up with a simple and straig
 - For logged-in users the dropdown menu will change, sign-up, and login will be replaced with sign-out and profile.<br>
 - Profile page has got the users<br>
 - The edit-account page allows a user to change everything except their username. They can also delete their account from this page, a confirmation of deletion is requested so that users can't accidentally delete the account.<br>
-- Admin users have additional nav links of manage genre and manage users. Manage user allows admin to delete a user, requiring confirmation prior to deletion. <br>
-
+- Admin users have additional nav links of manage genre and manage users. Manage user allows admin to delete a user, requiring confirmation prior to deletion. 
+#
 <br>
 ## Wireframe
 <br>
@@ -135,13 +135,15 @@ Upon exchanging info with family and friends, I came up with a simple and straig
 
 | Page | Desktop | Tablet | Mobile |
 | ---- | ------- | ------ | ------ |
-|Initial|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/initial.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/initial_tablet.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/initial_mobile_.png)|
-|Sign-in|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/signin_form.pngg)|[view](https://doc-le.github.io/Project-Milestone-1/assets/wireframe/tablet/projects.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/signformtablet.png)|
-|Logged -in|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/logged-in.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/loggedin.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/loggedin_mobile_1.png)|
-|Search Results|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search_tablet_.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search_results_mobile_1_1.png)|
-|Results|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search_result.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/search_resultstablet_1.png)|[view](https://github.com/Doc-Le/Project-3-Moovies-Review/blob/main/wireframe/result_mobile_1_2.png)|
-
-
+|Home|[view](https://user-images.githubusercontent.com/76841050/163263186-224d5cd3-9177-4dea-a81b-2b61e391ee12.png)|[view](https://user-images.githubusercontent.com/76841050/163260124-13af7602-d231-41bf-b68f-f50af1e95b04.png)|[view](https://user-images.githubusercontent.com/76841050/163260121-3339d28c-047e-4332-aeff-f760b1f1d6c0.png)|
+|Sign-up|[view](https://user-images.githubusercontent.com/76841050/163263181-8723367e-a060-4f68-821c-af03f785279a.png)|[view](https://user-images.githubusercontent.com/76841050/163260125-3ed5c12f-6097-4662-a186-4ca64a8dc143.png)|[view](https://user-images.githubusercontent.com/76841050/163260122-d2060e32-4dcc-4b69-b871-7663b61c278c.png)|
+|Sign-up 1|[view](https://user-images.githubusercontent.com/76841050/163263183-4dbbc6e5-a926-4eb6-bd0c-ee42f4d27fbb.png)|
+|Log-in|[view](https://user-images.githubusercontent.com/76841050/163263176-407ded6e-f1d8-4bdb-aaac-1e479c2ca349.png)|
+|Logged -in|[view](https://user-images.githubusercontent.com/76841050/163263189-d3336c1b-9982-4d98-a3c0-c8e67aa01faa.png)|[view](https://user-images.githubusercontent.com/76841050/163260128-c9dbeec1-d989-475e-9c77-29d68b1f0643.png)|
+|Profile|[view](https://user-images.githubusercontent.com/76841050/163263178-470a3ab2-05e5-414e-9f43-40e24d36c543.png)|[view](https://user-images.githubusercontent.com/76841050/163260133-912a3b38-f971-49ef-8b10-a4af2c226328.png)|
+|Search|[view](https://user-images.githubusercontent.com/76841050/163263180-d7b9f329-026a-49f6-a187-534f9d5a3d17.png)|[view](https://user-images.githubusercontent.com/76841050/163260130-6ec51434-eef1-4c20-b4ca-8cb2d6f7f02b.png)|[view](https://user-images.githubusercontent.com/76841050/163260123-8125ca15-bf32-4f96-8331-40ba06edb640.png)|
+|Review|[view](https://user-images.githubusercontent.com/76841050/163263179-b77d23f4-9da1-4dc0-8f2f-07c2619c5074.png)|
+#
 ### Surface
 
  -   #### Colour Scheme
